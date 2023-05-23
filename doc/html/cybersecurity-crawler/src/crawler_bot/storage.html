@@ -1,0 +1,2426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>cybersecurity-crawler.src.crawler_bot.storage API documentation</title>
+<meta name="description" content="Module that holds all the classes for storing information" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>cybersecurity-crawler.src.crawler_bot.storage</code></h1>
+</header>
+<section id="section-intro">
+<p>Module that holds all the classes for storing information</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Module that holds all the classes for storing information
+&#34;&#34;&#34;
+import queue
+import time
+import json
+from diagrams import Diagram
+from diagrams.alibabacloud.compute import ECS
+import os
+from urllib.parse import urlparse
+import requests
+from protego import Protego
+
+from src.crawler_bot.config import DEFAULT_CRAWL_DELAY, DIAGRAMM_MAX_URL_LENGTH, CUSTOM_USER_AGENT
+from src.crawler_bot.custom_logging import Logger
+
+
+class HTMLDatabaseEntry:
+  &#34;&#34;&#34;Class to safe a single HTML database entry
+
+  Attributes:
+    url: url of the html page
+    html: the html of the page
+    extracted_urls: list of extracted urls
+    relevant: bool that shows if entry is relevant or not
+    distances: dictionary with all distances from the document to the
+                possible categories
+    guessed_category: the guessed category by the classifier
+&#34;&#34;&#34;
+
+  def __init__(self, url: str, html: str, extracted_urls: list[str],
+               relevant: bool, distances: dict, relative_distances: dict,
+               guessed_category: str):
+    &#34;&#34;&#34;Inits HTMLDatabaseEntry
+
+    Args:
+      url: url of the html page
+      html: the html of the page
+      extracted_urls: list of extracted urls
+      relevant: bool that shows if entry is relevant or not
+      distances: dictionary with all distances from the document to the
+                  possible categories
+      relative_distances: dictionary with all relative distances from the
+                            document to the possible categories
+      guessed_category: the guessed category by the classifier
+    &#34;&#34;&#34;
+    self.url = url
+    self.html = html
+    self.extracted_urls = extracted_urls
+    self.relevant = relevant
+    self.distances = distances
+    self.relative_distances = relative_distances
+    self.guessed_category = guessed_category
+
+
+def get_relative_distance(single_entry: HTMLDatabaseEntry) -&gt; float:
+  &#34;&#34;&#34;Returns the relative_distance value of a single entry of the category
+      the entry was classified as
+
+  Returns:
+    float of the relative_distance, 0 if entry was classified as not relevant
+  &#34;&#34;&#34;
+  if not single_entry.relevant:
+    return 0
+
+  return single_entry.relative_distances[single_entry.guessed_category]
+
+
+class HTMLDatabase:
+  &#34;&#34;&#34;class that stores all the HTML content
+
+  Attributes:
+    name: name of the class for logging
+    database: list that contains all the HTML content
+    logger: the custom_logging module to log all kinds of messages
+  &#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits HTMLDatabase
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;HTMLDatabase&#34;
+    self.database: list[HTMLDatabaseEntry] = []
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def add_html_document(self, url: str, html_document: str, relevant: bool,
+                        extracted_urls: list[str], distances: dict,
+                        relative_distances: dict,
+                        guessed_category: str) -&gt; None:
+    &#34;&#34;&#34;Stores the given HTML document in the database
+
+    Args:
+      url: the url the html document belongs to
+      html_document: the html document that needs to be added
+      relevant: bool that shows if the html document is considered relevant
+      extracted_urls: list of extracted urls
+      distances: dictionary with all distances from the document to the
+                  possible categories
+      relative_distances: dictionary with all relative distances from the
+                            document to the possible categories
+      guessed_category: the guessed category by the classifier
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;adding HTML document for &#34; + url)
+    # create HTMLDatabaseEntry object and write to database
+    self.database.append(
+        HTMLDatabaseEntry(html=html_document,
+                          url=url,
+                          relevant=relevant,
+                          extracted_urls=extracted_urls,
+                          distances=distances,
+                          relative_distances=relative_distances,
+                          guessed_category=guessed_category))
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if html database is empty
+
+    Returns:
+      boolean that shows if database is empty
+    &#34;&#34;&#34;
+    return len(self.database) == 0
+
+  def sort_after_relevance(self) -&gt; None:
+    &#34;&#34;&#34;Sorts the database using the relative_distances
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.database.sort(key=get_relative_distance)
+
+  def get_list_of_relevant_urls(self) -&gt; list[str]:
+    &#34;&#34;&#34;Returns the url of all entries that are relevant
+
+    Returns:
+      list of urls
+    &#34;&#34;&#34;
+    result = [
+        a.url + &#34;,&#34; + a.guessed_category
+        for a in self.database
+        if a.relevant is True
+    ]
+    return result
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    document = []
+    # iterate through all items and create JSON document
+    for element in self.database:
+      document.append({
+          &#34;url&#34;: element.url,
+          #&#34;html document&#34;: element.html,
+          &#34;relevant&#34;: element.relevant,
+          &#34;distances&#34;: element.distances,
+          &#34;relative distances&#34;: element.relative_distances,
+          &#34;extracted urls&#34;: element.extracted_urls,
+          &#34;guessed category&#34;: element.guessed_category
+      })
+    return json.dumps(document)
+
+
+class UnprocessedHTMLDatabase:
+  &#34;&#34;&#34;Keeps a list of unprocessed HTML documents
+
+  Attributes:
+    database: contains the list of touples (url, html content)
+    logger: the custom_logging module to log all kinds of messages
+    name: name of the instance for logging
+
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits UnprocessedHtmlDatabase
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.database = []
+    self.logger = logger
+    self.name = &#34;UnprocessedHTMLDatabase&#34;
+
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def add_entry(self, url: str, is_seed: bool, html_document: str) -&gt; None:
+    &#34;&#34;&#34;Adds a new touple of url and html document to the database
+
+    Args:
+      url: string of the crawled page
+      is_seed: is url seed?
+      html_document: string of the recieved html document
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.database.append((url, is_seed, html_document))
+
+  def get_entry(self) -&gt; (str, bool, str):
+    &#34;&#34;&#34;Returns an entry from the database
+
+    Returns:
+      triple of (url, is_seed,html document)
+    &#34;&#34;&#34;
+    # return new url if available
+    if len(self.database) == 0:
+      return None, None, None
+    else:
+      return self.database.pop()
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if database is empty
+
+    Returns:
+      bool that shows if database is empty
+    &#34;&#34;&#34;
+    return len(self.database) == 0
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    document = []
+    # iterate through all items and create JSON document
+    for (url, is_seed, html) in self.database:
+      document.append({
+          &#34;url&#34;: url,
+          &#34;is_seed&#34;: str(is_seed),
+          &#34;html document&#34;: html
+      })
+    return json.dumps(document)
+
+
+class CrawledURLs:
+  &#34;&#34;&#34;Contains all the already crawled URLs
+
+  Attributes:
+    name: name of this instance for logging
+    crawled_urls: list of all already crawled urls
+    logger: the custom_logging module to log all kinds of messages
+    crawl_limit: amount of urls that should be crawled
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger, crawl_limit: int = 0):
+    &#34;&#34;&#34;Inits CrawledURLs
+
+    Args:
+      logger: the custom logging module
+      crawl_limit: amount of urls that will be crawled, 0 = no limit
+    &#34;&#34;&#34;
+    self.name = &#34;CrawledURLS&#34;
+    self.crawled_urls = []
+    self.logger = logger
+    self.crawl_limit = crawl_limit
+    self.logger.log_info(self.name,
+                         &#34;initialized, limit is &#34; + str(self.crawl_limit))
+
+  def add_crawled_url(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Adds the given URL to the list of already crawled URLs
+
+    Args:
+      url: string of the URL that needs to be added
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_info(self.name,
+                         &#34;adding following URL to the crawled list: &#34; + url)
+    self.crawled_urls.append(url)
+    print(&#34;URLs crawled: &#34; + str(len(self.crawled_urls)) + &#34;/&#34; +
+          str(self.crawl_limit))
+    if self.crawl_limit != 0 and len(self.crawled_urls) &gt;= self.crawl_limit:
+      self.logger.log_debug(self.name, &#34;Crawling limit reached!&#34;)
+
+  def crawl_limit_reached(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if the crawl limit is reached
+
+    Returns:
+      bool that shows if the crawl limit is reached
+    &#34;&#34;&#34;
+    if self.crawl_limit == 0:
+      return False
+    return len(self.crawled_urls) &gt;= self.crawl_limit
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    return json.dumps(self.crawled_urls)
+
+
+class DomainTimers:
+  &#34;&#34;&#34;Contains and manages all timers for crawled domains
+
+  Attributes:
+    name: name of this instance for logging
+    domain_timers: list of all domain timers
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits DomainTimers
+
+    Args:
+      logger: the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;DomainTimers&#34;
+    self.domain_timers = {}
+    self.logger = logger
+
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def time_until_next_request(self, domain: str, crawl_delay: float) -&gt; int:
+    &#34;&#34;&#34;Calculates how much time needs to be waited until next request to domain
+
+    Args:
+      domain: the domain that needs to be checked
+      crawl_delay: the delay between requests to the urls domain
+
+    Returns:
+      seconds that need to be waited until next request to this domain
+    &#34;&#34;&#34;
+    if domain not in self.domain_timers:
+      return 0  # no entry -&gt; we don&#39;t have to wait
+    else:
+      # check if enough time went by from last request to domain
+      time_passed = time.time() - self.domain_timers[domain]
+      time_to_wait = crawl_delay - time_passed
+
+      if time_to_wait &gt; 0:
+        return time_to_wait
+      else:
+        return 0
+
+  def set_timer(self, domain: str) -&gt; None:
+    &#34;&#34;&#34;Creates a new timer for a specific domain or
+        resets the already existing one
+
+    Args:
+      domain: the domain a timer needs to be set up for
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;setting up/resetting timer for &#34; + domain)
+    self.domain_timers[domain] = time.time()
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+
+    return json.dumps(self.domain_timers)
+
+
+class RobotsTXTDatabase:
+  &#34;&#34;&#34;Contains the dictionary of robotparsers for each domain
+      There are empty entries for all domains that don&#39;t have robot files
+
+      Standard: https://datatracker.ietf.org/doc/html/draft-koster-rep
+
+  Attributes:
+    database: the dictionary with robotparsers
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits RobotsTXTDatabase
+
+    Args:
+      logger: the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;RobotsTXTDatabase&#34;
+    self.database = {}
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def retrieve_robots_txt(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Retrieves the robots txt for the domain of the given url
+
+    Args:
+      url: the url of a website of a domain where we want to get the robots.txt
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    # get the domain
+    parsed_url = urlparse(url)
+
+    try:
+      x = requests.get(parsed_url.scheme + &#34;://&#34; + parsed_url.netloc +
+                       &#34;/robots.txt&#34;)
+      if x.status_code != 200:
+        self.database[parsed_url.netloc] = None
+      else:
+        self.database[parsed_url.netloc] = Protego.parse(x.text)
+    except:
+      self.database[parsed_url.netloc] = None
+
+    self.logger.log_debug(self.name,
+                          &#34;Robots.txt entry created for &#34; + parsed_url.netloc)
+
+  def get_crawl_delay(self, url: str) -&gt; float:
+    &#34;&#34;&#34;Extracts the crawl delay if it exists for the according domain
+
+    Args:
+      url: the url where we need the crawl delay of the domain
+
+    Returns:
+      the crawl delay, default one if none is available
+    &#34;&#34;&#34;
+    # extract the domain
+    domain = urlparse(url).netloc
+
+    # do we have an entry?
+    if domain in self.database:
+      # is it just a dummy entry?
+      if self.database[domain] is not None:
+        # is there a crawl delay defined in the robots.txt?
+        if self.database[domain].crawl_delay(CUSTOM_USER_AGENT) is not None:
+          return self.database[domain].crawl_delay(CUSTOM_USER_AGENT)
+        else:
+          return DEFAULT_CRAWL_DELAY
+    else:
+      # no entry, get it and then check again for crawl delay
+      self.retrieve_robots_txt(url)
+      return self.get_crawl_delay(url)
+
+  def can_fetch(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if the given url is allowed to crawl
+
+    Args:
+      url: url to check
+
+    Returns:
+      bool that shows if it is allowed to crawl the url
+   &#34;&#34;&#34;
+    # extract the domain
+    domain = urlparse(url).netloc
+
+    # do we have an entry?
+    if domain in self.database:
+      # is it just a dummy entry?
+      if self.database[domain] is not None:
+        return self.database[domain].can_fetch(url, CUSTOM_USER_AGENT)
+      else:
+        # no robots.txt, so no restrictions
+        return True
+    else:
+      # no entry, get it and then check again for crawl delay
+      self.retrieve_robots_txt(url)
+      return self.can_fetch(url)
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the keys of the database as json
+    &#34;&#34;&#34;
+    return json.dumps(list(self.database.keys()))
+
+
+class SetQueue(queue.Queue):
+  &#34;&#34;&#34;Variation of the Queue that avoids duplicate entries
+
+  https://stackoverflow.com/questions/16506429/check-if-element-is-already-in-a-queue
+  By doing that, the queue is not sorted anymore!!!
+&#34;&#34;&#34;
+
+  def __init__(self):
+    &#34;&#34;&#34;Inits SetQueue&#34;&#34;&#34;
+    super().__init__()
+
+  def _init(self, maxsize):
+    self.queue = set()
+
+  def _put(self, item):
+    self.queue.add(item)
+
+  def _get(self):
+    return self.queue.pop()
+
+
+class URLQueue():
+  &#34;&#34;&#34;Contains the URLs that need to be crawled
+
+  Attributes:
+    queue: the queue of URLs that will be crawled
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger, seed: [str]):
+    &#34;&#34;&#34;Inits URLQueue
+
+    Args:
+      logger: the custom logging module
+      seed: list of urls that define the seed
+    &#34;&#34;&#34;
+    self.name = &#34;URLQueue&#34;
+    self.queue = SetQueue()
+    for url in seed:
+      self.queue.put((url, True))
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def get_url(self) -&gt; str:
+    &#34;&#34;&#34;Returns a new URL from the queue
+
+    Returns:
+      A new URL from the queue
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;returning new URL&#34;)
+    if not self.queue.empty():
+      return self.queue.get()
+    else:
+      return None
+
+  def add_url(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Adds an URL to the queue but only if its not already in there
+
+    Since we are using a SetQueue we can add entries without checking
+    for duplicates
+
+    Args:
+      url: url that needs to be added
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;adding following URL to queue: &#34; + url)
+    self.queue.put((url, False))
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if queue is empty
+
+    Returns:
+      bool representing if queue is empty
+    &#34;&#34;&#34;
+    return self.queue.empty()
+
+
+class URLMap:
+  &#34;&#34;&#34;Database to save the chain of crawled URLs
+
+  Attributes:
+    name: name of this instance for logging
+    url_map: the list of url paths
+    logger: instance of the custom logging module
+  &#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits URLMap
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;URLMap&#34;
+    self.url_map = []
+    self.logger = logger
+
+  def add_url_path(self, url_from: str, url_to: str) -&gt; None:
+    &#34;&#34;&#34;Adds a new path to the url map
+
+    Args:
+      url_from: the url which was analized
+      url_to: the url which was extracted from url_from
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.url_map.append({&#34;url from&#34;: url_from, &#34;url to&#34;: url_to})
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    return json.dumps(self.url_map)
+
+  def draw_map(self, filename: str) -&gt; None:
+    &#34;&#34;&#34;Draws the map of all URL conections, the png file is stored in the
+        local directory
+
+    Args:
+      filename: name of the output file
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    url_to_object = {}
+    self.logger.log_debug(self.name, &#34;Generating url map&#34;)
+    # Opening up a new file to create diagram
+    with Diagram(outformat=&#34;svg&#34;, graph_attr={&#34;bgcolor&#34;: &#34;white&#34;},
+                 show=False) as diag:
+      # use cairo to render to embed the SVG images directly in the file
+      # https://github.com/mingrammer/diagrams/issues/8
+      diag.dot.renderer = &#34;cairo&#34;
+      # transform all urls into diagram objects
+      for entry in self.url_map:
+        if entry[&#34;url from&#34;] not in url_to_object:
+          if len(entry[&#34;url from&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+            url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;][:30] +
+                                                   &#34;...&#34;)
+          else:
+            url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;])
+        if entry[&#34;url to&#34;] not in url_to_object:
+          if len(entry[&#34;url to&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+            url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;][:30] + &#34;...&#34;)
+          else:
+            url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;])
+      # connect all the urls
+      for entry in self.url_map:
+        url_to_object[entry[&#34;url from&#34;]] &gt;&gt; url_to_object[entry[&#34;url to&#34;]]
+
+    # since we use cairo as renderer, we now have to rename the file
+    os.rename(&#34;diagrams_image.cairo.svg&#34;, filename + &#34;.svg&#34;)
+    self.logger.log_debug(self.name, &#34;url map done&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.get_relative_distance"><code class="name flex">
+<span>def <span class="ident">get_relative_distance</span></span>(<span>single_entry: cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabaseEntry) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the relative_distance value of a single entry of the category
+the entry was classified as</p>
+<h2 id="returns">Returns</h2>
+<p>float of the relative_distance, 0 if entry was classified as not relevant</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_relative_distance(single_entry: HTMLDatabaseEntry) -&gt; float:
+  &#34;&#34;&#34;Returns the relative_distance value of a single entry of the category
+      the entry was classified as
+
+  Returns:
+    float of the relative_distance, 0 if entry was classified as not relevant
+  &#34;&#34;&#34;
+  if not single_entry.relevant:
+    return 0
+
+  return single_entry.relative_distances[single_entry.guessed_category]</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs"><code class="flex name class">
+<span>class <span class="ident">CrawledURLs</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger, crawl_limit: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains all the already crawled URLs</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of this instance for logging</dd>
+<dt><strong><code>crawled_urls</code></strong></dt>
+<dd>list of all already crawled urls</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+<dt><strong><code>crawl_limit</code></strong></dt>
+<dd>amount of urls that should be crawled</dd>
+</dl>
+<p>Inits CrawledURLs</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom logging module</dd>
+<dt><strong><code>crawl_limit</code></strong></dt>
+<dd>amount of urls that will be crawled, 0 = no limit</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CrawledURLs:
+  &#34;&#34;&#34;Contains all the already crawled URLs
+
+  Attributes:
+    name: name of this instance for logging
+    crawled_urls: list of all already crawled urls
+    logger: the custom_logging module to log all kinds of messages
+    crawl_limit: amount of urls that should be crawled
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger, crawl_limit: int = 0):
+    &#34;&#34;&#34;Inits CrawledURLs
+
+    Args:
+      logger: the custom logging module
+      crawl_limit: amount of urls that will be crawled, 0 = no limit
+    &#34;&#34;&#34;
+    self.name = &#34;CrawledURLS&#34;
+    self.crawled_urls = []
+    self.logger = logger
+    self.crawl_limit = crawl_limit
+    self.logger.log_info(self.name,
+                         &#34;initialized, limit is &#34; + str(self.crawl_limit))
+
+  def add_crawled_url(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Adds the given URL to the list of already crawled URLs
+
+    Args:
+      url: string of the URL that needs to be added
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_info(self.name,
+                         &#34;adding following URL to the crawled list: &#34; + url)
+    self.crawled_urls.append(url)
+    print(&#34;URLs crawled: &#34; + str(len(self.crawled_urls)) + &#34;/&#34; +
+          str(self.crawl_limit))
+    if self.crawl_limit != 0 and len(self.crawled_urls) &gt;= self.crawl_limit:
+      self.logger.log_debug(self.name, &#34;Crawling limit reached!&#34;)
+
+  def crawl_limit_reached(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if the crawl limit is reached
+
+    Returns:
+      bool that shows if the crawl limit is reached
+    &#34;&#34;&#34;
+    if self.crawl_limit == 0:
+      return False
+    return len(self.crawled_urls) &gt;= self.crawl_limit
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    return json.dumps(self.crawled_urls)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.add_crawled_url"><code class="name flex">
+<span>def <span class="ident">add_crawled_url</span></span>(<span>self, url: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds the given URL to the list of already crawled URLs</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>string of the URL that needs to be added</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_crawled_url(self, url: str) -&gt; None:
+  &#34;&#34;&#34;Adds the given URL to the list of already crawled URLs
+
+  Args:
+    url: string of the URL that needs to be added
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_info(self.name,
+                       &#34;adding following URL to the crawled list: &#34; + url)
+  self.crawled_urls.append(url)
+  print(&#34;URLs crawled: &#34; + str(len(self.crawled_urls)) + &#34;/&#34; +
+        str(self.crawl_limit))
+  if self.crawl_limit != 0 and len(self.crawled_urls) &gt;= self.crawl_limit:
+    self.logger.log_debug(self.name, &#34;Crawling limit reached!&#34;)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.crawl_limit_reached"><code class="name flex">
+<span>def <span class="ident">crawl_limit_reached</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the crawl limit is reached</p>
+<h2 id="returns">Returns</h2>
+<p>bool that shows if the crawl limit is reached</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def crawl_limit_reached(self) -&gt; bool:
+  &#34;&#34;&#34;Checks if the crawl limit is reached
+
+  Returns:
+    bool that shows if the crawl limit is reached
+  &#34;&#34;&#34;
+  if self.crawl_limit == 0:
+    return False
+  return len(self.crawled_urls) &gt;= self.crawl_limit</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the database in JSON format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the database in JSON format
+  &#34;&#34;&#34;
+  return json.dumps(self.crawled_urls)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers"><code class="flex name class">
+<span>class <span class="ident">DomainTimers</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains and manages all timers for crawled domains</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of this instance for logging</dd>
+<dt><strong><code>domain_timers</code></strong></dt>
+<dd>list of all domain timers</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+</dl>
+<p>Inits DomainTimers</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom logging module</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DomainTimers:
+  &#34;&#34;&#34;Contains and manages all timers for crawled domains
+
+  Attributes:
+    name: name of this instance for logging
+    domain_timers: list of all domain timers
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits DomainTimers
+
+    Args:
+      logger: the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;DomainTimers&#34;
+    self.domain_timers = {}
+    self.logger = logger
+
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def time_until_next_request(self, domain: str, crawl_delay: float) -&gt; int:
+    &#34;&#34;&#34;Calculates how much time needs to be waited until next request to domain
+
+    Args:
+      domain: the domain that needs to be checked
+      crawl_delay: the delay between requests to the urls domain
+
+    Returns:
+      seconds that need to be waited until next request to this domain
+    &#34;&#34;&#34;
+    if domain not in self.domain_timers:
+      return 0  # no entry -&gt; we don&#39;t have to wait
+    else:
+      # check if enough time went by from last request to domain
+      time_passed = time.time() - self.domain_timers[domain]
+      time_to_wait = crawl_delay - time_passed
+
+      if time_to_wait &gt; 0:
+        return time_to_wait
+      else:
+        return 0
+
+  def set_timer(self, domain: str) -&gt; None:
+    &#34;&#34;&#34;Creates a new timer for a specific domain or
+        resets the already existing one
+
+    Args:
+      domain: the domain a timer needs to be set up for
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;setting up/resetting timer for &#34; + domain)
+    self.domain_timers[domain] = time.time()
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+
+    return json.dumps(self.domain_timers)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.set_timer"><code class="name flex">
+<span>def <span class="ident">set_timer</span></span>(<span>self, domain: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a new timer for a specific domain or
+resets the already existing one</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the domain a timer needs to be set up for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_timer(self, domain: str) -&gt; None:
+  &#34;&#34;&#34;Creates a new timer for a specific domain or
+      resets the already existing one
+
+  Args:
+    domain: the domain a timer needs to be set up for
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name, &#34;setting up/resetting timer for &#34; + domain)
+  self.domain_timers[domain] = time.time()</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.time_until_next_request"><code class="name flex">
+<span>def <span class="ident">time_until_next_request</span></span>(<span>self, domain: str, crawl_delay: float) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates how much time needs to be waited until next request to domain</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the domain that needs to be checked</dd>
+<dt><strong><code>crawl_delay</code></strong></dt>
+<dd>the delay between requests to the urls domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>seconds that need to be waited until next request to this domain</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def time_until_next_request(self, domain: str, crawl_delay: float) -&gt; int:
+  &#34;&#34;&#34;Calculates how much time needs to be waited until next request to domain
+
+  Args:
+    domain: the domain that needs to be checked
+    crawl_delay: the delay between requests to the urls domain
+
+  Returns:
+    seconds that need to be waited until next request to this domain
+  &#34;&#34;&#34;
+  if domain not in self.domain_timers:
+    return 0  # no entry -&gt; we don&#39;t have to wait
+  else:
+    # check if enough time went by from last request to domain
+    time_passed = time.time() - self.domain_timers[domain]
+    time_to_wait = crawl_delay - time_passed
+
+    if time_to_wait &gt; 0:
+      return time_to_wait
+    else:
+      return 0</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the database in JSON format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the database in JSON format
+  &#34;&#34;&#34;
+
+  return json.dumps(self.domain_timers)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase"><code class="flex name class">
+<span>class <span class="ident">HTMLDatabase</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>class that stores all the HTML content</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of the class for logging</dd>
+<dt><strong><code>database</code></strong></dt>
+<dd>list that contains all the HTML content</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+</dl>
+<p>Inits HTMLDatabase</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the custom logging module</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HTMLDatabase:
+  &#34;&#34;&#34;class that stores all the HTML content
+
+  Attributes:
+    name: name of the class for logging
+    database: list that contains all the HTML content
+    logger: the custom_logging module to log all kinds of messages
+  &#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits HTMLDatabase
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;HTMLDatabase&#34;
+    self.database: list[HTMLDatabaseEntry] = []
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def add_html_document(self, url: str, html_document: str, relevant: bool,
+                        extracted_urls: list[str], distances: dict,
+                        relative_distances: dict,
+                        guessed_category: str) -&gt; None:
+    &#34;&#34;&#34;Stores the given HTML document in the database
+
+    Args:
+      url: the url the html document belongs to
+      html_document: the html document that needs to be added
+      relevant: bool that shows if the html document is considered relevant
+      extracted_urls: list of extracted urls
+      distances: dictionary with all distances from the document to the
+                  possible categories
+      relative_distances: dictionary with all relative distances from the
+                            document to the possible categories
+      guessed_category: the guessed category by the classifier
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;adding HTML document for &#34; + url)
+    # create HTMLDatabaseEntry object and write to database
+    self.database.append(
+        HTMLDatabaseEntry(html=html_document,
+                          url=url,
+                          relevant=relevant,
+                          extracted_urls=extracted_urls,
+                          distances=distances,
+                          relative_distances=relative_distances,
+                          guessed_category=guessed_category))
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if html database is empty
+
+    Returns:
+      boolean that shows if database is empty
+    &#34;&#34;&#34;
+    return len(self.database) == 0
+
+  def sort_after_relevance(self) -&gt; None:
+    &#34;&#34;&#34;Sorts the database using the relative_distances
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.database.sort(key=get_relative_distance)
+
+  def get_list_of_relevant_urls(self) -&gt; list[str]:
+    &#34;&#34;&#34;Returns the url of all entries that are relevant
+
+    Returns:
+      list of urls
+    &#34;&#34;&#34;
+    result = [
+        a.url + &#34;,&#34; + a.guessed_category
+        for a in self.database
+        if a.relevant is True
+    ]
+    return result
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    document = []
+    # iterate through all items and create JSON document
+    for element in self.database:
+      document.append({
+          &#34;url&#34;: element.url,
+          #&#34;html document&#34;: element.html,
+          &#34;relevant&#34;: element.relevant,
+          &#34;distances&#34;: element.distances,
+          &#34;relative distances&#34;: element.relative_distances,
+          &#34;extracted urls&#34;: element.extracted_urls,
+          &#34;guessed category&#34;: element.guessed_category
+      })
+    return json.dumps(document)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.add_html_document"><code class="name flex">
+<span>def <span class="ident">add_html_document</span></span>(<span>self, url: str, html_document: str, relevant: bool, extracted_urls: list[str], distances: dict, relative_distances: dict, guessed_category: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stores the given HTML document in the database</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>the url the html document belongs to</dd>
+<dt><strong><code>html_document</code></strong></dt>
+<dd>the html document that needs to be added</dd>
+<dt><strong><code>relevant</code></strong></dt>
+<dd>bool that shows if the html document is considered relevant</dd>
+<dt><strong><code>extracted_urls</code></strong></dt>
+<dd>list of extracted urls</dd>
+<dt><strong><code>distances</code></strong></dt>
+<dd>dictionary with all distances from the document to the
+possible categories</dd>
+<dt><strong><code>relative_distances</code></strong></dt>
+<dd>dictionary with all relative distances from the
+document to the possible categories</dd>
+<dt><strong><code>guessed_category</code></strong></dt>
+<dd>the guessed category by the classifier</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_html_document(self, url: str, html_document: str, relevant: bool,
+                      extracted_urls: list[str], distances: dict,
+                      relative_distances: dict,
+                      guessed_category: str) -&gt; None:
+  &#34;&#34;&#34;Stores the given HTML document in the database
+
+  Args:
+    url: the url the html document belongs to
+    html_document: the html document that needs to be added
+    relevant: bool that shows if the html document is considered relevant
+    extracted_urls: list of extracted urls
+    distances: dictionary with all distances from the document to the
+                possible categories
+    relative_distances: dictionary with all relative distances from the
+                          document to the possible categories
+    guessed_category: the guessed category by the classifier
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name, &#34;adding HTML document for &#34; + url)
+  # create HTMLDatabaseEntry object and write to database
+  self.database.append(
+      HTMLDatabaseEntry(html=html_document,
+                        url=url,
+                        relevant=relevant,
+                        extracted_urls=extracted_urls,
+                        distances=distances,
+                        relative_distances=relative_distances,
+                        guessed_category=guessed_category))</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.get_list_of_relevant_urls"><code class="name flex">
+<span>def <span class="ident">get_list_of_relevant_urls</span></span>(<span>self) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the url of all entries that are relevant</p>
+<h2 id="returns">Returns</h2>
+<p>list of urls</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_list_of_relevant_urls(self) -&gt; list[str]:
+  &#34;&#34;&#34;Returns the url of all entries that are relevant
+
+  Returns:
+    list of urls
+  &#34;&#34;&#34;
+  result = [
+      a.url + &#34;,&#34; + a.guessed_category
+      for a in self.database
+      if a.relevant is True
+  ]
+  return result</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.is_empty"><code class="name flex">
+<span>def <span class="ident">is_empty</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if html database is empty</p>
+<h2 id="returns">Returns</h2>
+<p>boolean that shows if database is empty</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_empty(self) -&gt; bool:
+  &#34;&#34;&#34;Checks if html database is empty
+
+  Returns:
+    boolean that shows if database is empty
+  &#34;&#34;&#34;
+  return len(self.database) == 0</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.sort_after_relevance"><code class="name flex">
+<span>def <span class="ident">sort_after_relevance</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sorts the database using the relative_distances</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort_after_relevance(self) -&gt; None:
+  &#34;&#34;&#34;Sorts the database using the relative_distances
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.database.sort(key=get_relative_distance)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the database in JSON format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the database in JSON format
+  &#34;&#34;&#34;
+  document = []
+  # iterate through all items and create JSON document
+  for element in self.database:
+    document.append({
+        &#34;url&#34;: element.url,
+        #&#34;html document&#34;: element.html,
+        &#34;relevant&#34;: element.relevant,
+        &#34;distances&#34;: element.distances,
+        &#34;relative distances&#34;: element.relative_distances,
+        &#34;extracted urls&#34;: element.extracted_urls,
+        &#34;guessed category&#34;: element.guessed_category
+    })
+  return json.dumps(document)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabaseEntry"><code class="flex name class">
+<span>class <span class="ident">HTMLDatabaseEntry</span></span>
+<span>(</span><span>url: str, html: str, extracted_urls: list[str], relevant: bool, distances: dict, relative_distances: dict, guessed_category: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class to safe a single HTML database entry</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>url of the html page</dd>
+<dt><strong><code>html</code></strong></dt>
+<dd>the html of the page</dd>
+<dt><strong><code>extracted_urls</code></strong></dt>
+<dd>list of extracted urls</dd>
+<dt><strong><code>relevant</code></strong></dt>
+<dd>bool that shows if entry is relevant or not</dd>
+<dt><strong><code>distances</code></strong></dt>
+<dd>dictionary with all distances from the document to the
+possible categories</dd>
+<dt><strong><code>guessed_category</code></strong></dt>
+<dd>the guessed category by the classifier</dd>
+</dl>
+<p>Inits HTMLDatabaseEntry</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>url of the html page</dd>
+<dt><strong><code>html</code></strong></dt>
+<dd>the html of the page</dd>
+<dt><strong><code>extracted_urls</code></strong></dt>
+<dd>list of extracted urls</dd>
+<dt><strong><code>relevant</code></strong></dt>
+<dd>bool that shows if entry is relevant or not</dd>
+<dt><strong><code>distances</code></strong></dt>
+<dd>dictionary with all distances from the document to the
+possible categories</dd>
+<dt><strong><code>relative_distances</code></strong></dt>
+<dd>dictionary with all relative distances from the
+document to the possible categories</dd>
+<dt><strong><code>guessed_category</code></strong></dt>
+<dd>the guessed category by the classifier</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HTMLDatabaseEntry:
+  &#34;&#34;&#34;Class to safe a single HTML database entry
+
+  Attributes:
+    url: url of the html page
+    html: the html of the page
+    extracted_urls: list of extracted urls
+    relevant: bool that shows if entry is relevant or not
+    distances: dictionary with all distances from the document to the
+                possible categories
+    guessed_category: the guessed category by the classifier
+&#34;&#34;&#34;
+
+  def __init__(self, url: str, html: str, extracted_urls: list[str],
+               relevant: bool, distances: dict, relative_distances: dict,
+               guessed_category: str):
+    &#34;&#34;&#34;Inits HTMLDatabaseEntry
+
+    Args:
+      url: url of the html page
+      html: the html of the page
+      extracted_urls: list of extracted urls
+      relevant: bool that shows if entry is relevant or not
+      distances: dictionary with all distances from the document to the
+                  possible categories
+      relative_distances: dictionary with all relative distances from the
+                            document to the possible categories
+      guessed_category: the guessed category by the classifier
+    &#34;&#34;&#34;
+    self.url = url
+    self.html = html
+    self.extracted_urls = extracted_urls
+    self.relevant = relevant
+    self.distances = distances
+    self.relative_distances = relative_distances
+    self.guessed_category = guessed_category</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase"><code class="flex name class">
+<span>class <span class="ident">RobotsTXTDatabase</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains the dictionary of robotparsers for each domain
+There are empty entries for all domains that don't have robot files</p>
+<pre><code>Standard: &lt;https://datatracker.ietf.org/doc/html/draft-koster-rep&gt;
+</code></pre>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>database</code></strong></dt>
+<dd>the dictionary with robotparsers</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+</dl>
+<p>Inits RobotsTXTDatabase</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom logging module</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RobotsTXTDatabase:
+  &#34;&#34;&#34;Contains the dictionary of robotparsers for each domain
+      There are empty entries for all domains that don&#39;t have robot files
+
+      Standard: https://datatracker.ietf.org/doc/html/draft-koster-rep
+
+  Attributes:
+    database: the dictionary with robotparsers
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits RobotsTXTDatabase
+
+    Args:
+      logger: the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;RobotsTXTDatabase&#34;
+    self.database = {}
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def retrieve_robots_txt(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Retrieves the robots txt for the domain of the given url
+
+    Args:
+      url: the url of a website of a domain where we want to get the robots.txt
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    # get the domain
+    parsed_url = urlparse(url)
+
+    try:
+      x = requests.get(parsed_url.scheme + &#34;://&#34; + parsed_url.netloc +
+                       &#34;/robots.txt&#34;)
+      if x.status_code != 200:
+        self.database[parsed_url.netloc] = None
+      else:
+        self.database[parsed_url.netloc] = Protego.parse(x.text)
+    except:
+      self.database[parsed_url.netloc] = None
+
+    self.logger.log_debug(self.name,
+                          &#34;Robots.txt entry created for &#34; + parsed_url.netloc)
+
+  def get_crawl_delay(self, url: str) -&gt; float:
+    &#34;&#34;&#34;Extracts the crawl delay if it exists for the according domain
+
+    Args:
+      url: the url where we need the crawl delay of the domain
+
+    Returns:
+      the crawl delay, default one if none is available
+    &#34;&#34;&#34;
+    # extract the domain
+    domain = urlparse(url).netloc
+
+    # do we have an entry?
+    if domain in self.database:
+      # is it just a dummy entry?
+      if self.database[domain] is not None:
+        # is there a crawl delay defined in the robots.txt?
+        if self.database[domain].crawl_delay(CUSTOM_USER_AGENT) is not None:
+          return self.database[domain].crawl_delay(CUSTOM_USER_AGENT)
+        else:
+          return DEFAULT_CRAWL_DELAY
+    else:
+      # no entry, get it and then check again for crawl delay
+      self.retrieve_robots_txt(url)
+      return self.get_crawl_delay(url)
+
+  def can_fetch(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if the given url is allowed to crawl
+
+    Args:
+      url: url to check
+
+    Returns:
+      bool that shows if it is allowed to crawl the url
+   &#34;&#34;&#34;
+    # extract the domain
+    domain = urlparse(url).netloc
+
+    # do we have an entry?
+    if domain in self.database:
+      # is it just a dummy entry?
+      if self.database[domain] is not None:
+        return self.database[domain].can_fetch(url, CUSTOM_USER_AGENT)
+      else:
+        # no robots.txt, so no restrictions
+        return True
+    else:
+      # no entry, get it and then check again for crawl delay
+      self.retrieve_robots_txt(url)
+      return self.can_fetch(url)
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the keys of the database as json
+    &#34;&#34;&#34;
+    return json.dumps(list(self.database.keys()))</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.can_fetch"><code class="name flex">
+<span>def <span class="ident">can_fetch</span></span>(<span>self, url: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given url is allowed to crawl</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>url to check</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>bool that shows if it is allowed to crawl the url</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def can_fetch(self, url: str) -&gt; bool:
+  &#34;&#34;&#34;Checks if the given url is allowed to crawl
+
+  Args:
+    url: url to check
+
+  Returns:
+    bool that shows if it is allowed to crawl the url
+ &#34;&#34;&#34;
+  # extract the domain
+  domain = urlparse(url).netloc
+
+  # do we have an entry?
+  if domain in self.database:
+    # is it just a dummy entry?
+    if self.database[domain] is not None:
+      return self.database[domain].can_fetch(url, CUSTOM_USER_AGENT)
+    else:
+      # no robots.txt, so no restrictions
+      return True
+  else:
+    # no entry, get it and then check again for crawl delay
+    self.retrieve_robots_txt(url)
+    return self.can_fetch(url)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.get_crawl_delay"><code class="name flex">
+<span>def <span class="ident">get_crawl_delay</span></span>(<span>self, url: str) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts the crawl delay if it exists for the according domain</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>the url where we need the crawl delay of the domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>the crawl delay, default one if none is available</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_crawl_delay(self, url: str) -&gt; float:
+  &#34;&#34;&#34;Extracts the crawl delay if it exists for the according domain
+
+  Args:
+    url: the url where we need the crawl delay of the domain
+
+  Returns:
+    the crawl delay, default one if none is available
+  &#34;&#34;&#34;
+  # extract the domain
+  domain = urlparse(url).netloc
+
+  # do we have an entry?
+  if domain in self.database:
+    # is it just a dummy entry?
+    if self.database[domain] is not None:
+      # is there a crawl delay defined in the robots.txt?
+      if self.database[domain].crawl_delay(CUSTOM_USER_AGENT) is not None:
+        return self.database[domain].crawl_delay(CUSTOM_USER_AGENT)
+      else:
+        return DEFAULT_CRAWL_DELAY
+  else:
+    # no entry, get it and then check again for crawl delay
+    self.retrieve_robots_txt(url)
+    return self.get_crawl_delay(url)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.retrieve_robots_txt"><code class="name flex">
+<span>def <span class="ident">retrieve_robots_txt</span></span>(<span>self, url: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieves the robots txt for the domain of the given url</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>the url of a website of a domain where we want to get the robots.txt</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def retrieve_robots_txt(self, url: str) -&gt; None:
+  &#34;&#34;&#34;Retrieves the robots txt for the domain of the given url
+
+  Args:
+    url: the url of a website of a domain where we want to get the robots.txt
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  # get the domain
+  parsed_url = urlparse(url)
+
+  try:
+    x = requests.get(parsed_url.scheme + &#34;://&#34; + parsed_url.netloc +
+                     &#34;/robots.txt&#34;)
+    if x.status_code != 200:
+      self.database[parsed_url.netloc] = None
+    else:
+      self.database[parsed_url.netloc] = Protego.parse(x.text)
+  except:
+    self.database[parsed_url.netloc] = None
+
+  self.logger.log_debug(self.name,
+                        &#34;Robots.txt entry created for &#34; + parsed_url.netloc)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the keys of the database as json</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the keys of the database as json
+  &#34;&#34;&#34;
+  return json.dumps(list(self.database.keys()))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.SetQueue"><code class="flex name class">
+<span>class <span class="ident">SetQueue</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Variation of the Queue that avoids duplicate entries</p>
+<p><a href="https://stackoverflow.com/questions/16506429/check-if-element-is-already-in-a-queue">https://stackoverflow.com/questions/16506429/check-if-element-is-already-in-a-queue</a>
+By doing that, the queue is not sorted anymore!!!</p>
+<p>Inits SetQueue</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SetQueue(queue.Queue):
+  &#34;&#34;&#34;Variation of the Queue that avoids duplicate entries
+
+  https://stackoverflow.com/questions/16506429/check-if-element-is-already-in-a-queue
+  By doing that, the queue is not sorted anymore!!!
+&#34;&#34;&#34;
+
+  def __init__(self):
+    &#34;&#34;&#34;Inits SetQueue&#34;&#34;&#34;
+    super().__init__()
+
+  def _init(self, maxsize):
+    self.queue = set()
+
+  def _put(self, item):
+    self.queue.add(item)
+
+  def _get(self):
+    return self.queue.pop()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>queue.Queue</li>
+</ul>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLMap"><code class="flex name class">
+<span>class <span class="ident">URLMap</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Database to save the chain of crawled URLs</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of this instance for logging</dd>
+<dt><strong><code>url_map</code></strong></dt>
+<dd>the list of url paths</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the custom logging module</dd>
+</dl>
+<p>Inits URLMap</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the custom logging module</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class URLMap:
+  &#34;&#34;&#34;Database to save the chain of crawled URLs
+
+  Attributes:
+    name: name of this instance for logging
+    url_map: the list of url paths
+    logger: instance of the custom logging module
+  &#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits URLMap
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.name = &#34;URLMap&#34;
+    self.url_map = []
+    self.logger = logger
+
+  def add_url_path(self, url_from: str, url_to: str) -&gt; None:
+    &#34;&#34;&#34;Adds a new path to the url map
+
+    Args:
+      url_from: the url which was analized
+      url_to: the url which was extracted from url_from
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.url_map.append({&#34;url from&#34;: url_from, &#34;url to&#34;: url_to})
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    return json.dumps(self.url_map)
+
+  def draw_map(self, filename: str) -&gt; None:
+    &#34;&#34;&#34;Draws the map of all URL conections, the png file is stored in the
+        local directory
+
+    Args:
+      filename: name of the output file
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    url_to_object = {}
+    self.logger.log_debug(self.name, &#34;Generating url map&#34;)
+    # Opening up a new file to create diagram
+    with Diagram(outformat=&#34;svg&#34;, graph_attr={&#34;bgcolor&#34;: &#34;white&#34;},
+                 show=False) as diag:
+      # use cairo to render to embed the SVG images directly in the file
+      # https://github.com/mingrammer/diagrams/issues/8
+      diag.dot.renderer = &#34;cairo&#34;
+      # transform all urls into diagram objects
+      for entry in self.url_map:
+        if entry[&#34;url from&#34;] not in url_to_object:
+          if len(entry[&#34;url from&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+            url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;][:30] +
+                                                   &#34;...&#34;)
+          else:
+            url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;])
+        if entry[&#34;url to&#34;] not in url_to_object:
+          if len(entry[&#34;url to&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+            url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;][:30] + &#34;...&#34;)
+          else:
+            url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;])
+      # connect all the urls
+      for entry in self.url_map:
+        url_to_object[entry[&#34;url from&#34;]] &gt;&gt; url_to_object[entry[&#34;url to&#34;]]
+
+    # since we use cairo as renderer, we now have to rename the file
+    os.rename(&#34;diagrams_image.cairo.svg&#34;, filename + &#34;.svg&#34;)
+    self.logger.log_debug(self.name, &#34;url map done&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLMap.add_url_path"><code class="name flex">
+<span>def <span class="ident">add_url_path</span></span>(<span>self, url_from: str, url_to: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds a new path to the url map</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url_from</code></strong></dt>
+<dd>the url which was analized</dd>
+<dt><strong><code>url_to</code></strong></dt>
+<dd>the url which was extracted from url_from</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_url_path(self, url_from: str, url_to: str) -&gt; None:
+  &#34;&#34;&#34;Adds a new path to the url map
+
+  Args:
+    url_from: the url which was analized
+    url_to: the url which was extracted from url_from
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.url_map.append({&#34;url from&#34;: url_from, &#34;url to&#34;: url_to})</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLMap.draw_map"><code class="name flex">
+<span>def <span class="ident">draw_map</span></span>(<span>self, filename: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws the map of all URL conections, the png file is stored in the
+local directory</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong></dt>
+<dd>name of the output file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_map(self, filename: str) -&gt; None:
+  &#34;&#34;&#34;Draws the map of all URL conections, the png file is stored in the
+      local directory
+
+  Args:
+    filename: name of the output file
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  url_to_object = {}
+  self.logger.log_debug(self.name, &#34;Generating url map&#34;)
+  # Opening up a new file to create diagram
+  with Diagram(outformat=&#34;svg&#34;, graph_attr={&#34;bgcolor&#34;: &#34;white&#34;},
+               show=False) as diag:
+    # use cairo to render to embed the SVG images directly in the file
+    # https://github.com/mingrammer/diagrams/issues/8
+    diag.dot.renderer = &#34;cairo&#34;
+    # transform all urls into diagram objects
+    for entry in self.url_map:
+      if entry[&#34;url from&#34;] not in url_to_object:
+        if len(entry[&#34;url from&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+          url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;][:30] +
+                                                 &#34;...&#34;)
+        else:
+          url_to_object[entry[&#34;url from&#34;]] = ECS(entry[&#34;url from&#34;])
+      if entry[&#34;url to&#34;] not in url_to_object:
+        if len(entry[&#34;url to&#34;]) &gt; DIAGRAMM_MAX_URL_LENGTH:
+          url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;][:30] + &#34;...&#34;)
+        else:
+          url_to_object[entry[&#34;url to&#34;]] = ECS(entry[&#34;url to&#34;])
+    # connect all the urls
+    for entry in self.url_map:
+      url_to_object[entry[&#34;url from&#34;]] &gt;&gt; url_to_object[entry[&#34;url to&#34;]]
+
+  # since we use cairo as renderer, we now have to rename the file
+  os.rename(&#34;diagrams_image.cairo.svg&#34;, filename + &#34;.svg&#34;)
+  self.logger.log_debug(self.name, &#34;url map done&#34;)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLMap.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the database in JSON format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the database in JSON format
+  &#34;&#34;&#34;
+  return json.dumps(self.url_map)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLQueue"><code class="flex name class">
+<span>class <span class="ident">URLQueue</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger, seed: [<class 'str'>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains the URLs that need to be crawled</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>queue</code></strong></dt>
+<dd>the queue of URLs that will be crawled</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+</dl>
+<p>Inits URLQueue</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom logging module</dd>
+<dt><strong><code>seed</code></strong></dt>
+<dd>list of urls that define the seed</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class URLQueue():
+  &#34;&#34;&#34;Contains the URLs that need to be crawled
+
+  Attributes:
+    queue: the queue of URLs that will be crawled
+    logger: the custom_logging module to log all kinds of messages
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger, seed: [str]):
+    &#34;&#34;&#34;Inits URLQueue
+
+    Args:
+      logger: the custom logging module
+      seed: list of urls that define the seed
+    &#34;&#34;&#34;
+    self.name = &#34;URLQueue&#34;
+    self.queue = SetQueue()
+    for url in seed:
+      self.queue.put((url, True))
+    self.logger = logger
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def get_url(self) -&gt; str:
+    &#34;&#34;&#34;Returns a new URL from the queue
+
+    Returns:
+      A new URL from the queue
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;returning new URL&#34;)
+    if not self.queue.empty():
+      return self.queue.get()
+    else:
+      return None
+
+  def add_url(self, url: str) -&gt; None:
+    &#34;&#34;&#34;Adds an URL to the queue but only if its not already in there
+
+    Since we are using a SetQueue we can add entries without checking
+    for duplicates
+
+    Args:
+      url: url that needs to be added
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;adding following URL to queue: &#34; + url)
+    self.queue.put((url, False))
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if queue is empty
+
+    Returns:
+      bool representing if queue is empty
+    &#34;&#34;&#34;
+    return self.queue.empty()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.add_url"><code class="name flex">
+<span>def <span class="ident">add_url</span></span>(<span>self, url: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds an URL to the queue but only if its not already in there</p>
+<p>Since we are using a SetQueue we can add entries without checking
+for duplicates</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>url that needs to be added</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_url(self, url: str) -&gt; None:
+  &#34;&#34;&#34;Adds an URL to the queue but only if its not already in there
+
+  Since we are using a SetQueue we can add entries without checking
+  for duplicates
+
+  Args:
+    url: url that needs to be added
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name, &#34;adding following URL to queue: &#34; + url)
+  self.queue.put((url, False))</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.get_url"><code class="name flex">
+<span>def <span class="ident">get_url</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a new URL from the queue</p>
+<h2 id="returns">Returns</h2>
+<p>A new URL from the queue</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_url(self) -&gt; str:
+  &#34;&#34;&#34;Returns a new URL from the queue
+
+  Returns:
+    A new URL from the queue
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name, &#34;returning new URL&#34;)
+  if not self.queue.empty():
+    return self.queue.get()
+  else:
+    return None</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.is_empty"><code class="name flex">
+<span>def <span class="ident">is_empty</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if queue is empty</p>
+<h2 id="returns">Returns</h2>
+<p>bool representing if queue is empty</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_empty(self) -&gt; bool:
+  &#34;&#34;&#34;Checks if queue is empty
+
+  Returns:
+    bool representing if queue is empty
+  &#34;&#34;&#34;
+  return self.queue.empty()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase"><code class="flex name class">
+<span>class <span class="ident">UnprocessedHTMLDatabase</span></span>
+<span>(</span><span>logger: src.crawler_bot.custom_logging.Logger)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Keeps a list of unprocessed HTML documents</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>database</code></strong></dt>
+<dd>contains the list of touples (url, html content)</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>the custom_logging module to log all kinds of messages</dd>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of the instance for logging</dd>
+</dl>
+<p>Inits UnprocessedHtmlDatabase</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the custom logging module</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnprocessedHTMLDatabase:
+  &#34;&#34;&#34;Keeps a list of unprocessed HTML documents
+
+  Attributes:
+    database: contains the list of touples (url, html content)
+    logger: the custom_logging module to log all kinds of messages
+    name: name of the instance for logging
+
+&#34;&#34;&#34;
+
+  def __init__(self, logger: Logger):
+    &#34;&#34;&#34;Inits UnprocessedHtmlDatabase
+
+    Args:
+      logger: instance of the custom logging module
+    &#34;&#34;&#34;
+    self.database = []
+    self.logger = logger
+    self.name = &#34;UnprocessedHTMLDatabase&#34;
+
+    self.logger.log_info(self.name, &#34;initialized&#34;)
+
+  def add_entry(self, url: str, is_seed: bool, html_document: str) -&gt; None:
+    &#34;&#34;&#34;Adds a new touple of url and html document to the database
+
+    Args:
+      url: string of the crawled page
+      is_seed: is url seed?
+      html_document: string of the recieved html document
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.database.append((url, is_seed, html_document))
+
+  def get_entry(self) -&gt; (str, bool, str):
+    &#34;&#34;&#34;Returns an entry from the database
+
+    Returns:
+      triple of (url, is_seed,html document)
+    &#34;&#34;&#34;
+    # return new url if available
+    if len(self.database) == 0:
+      return None, None, None
+    else:
+      return self.database.pop()
+
+  def is_empty(self) -&gt; bool:
+    &#34;&#34;&#34;Checks if database is empty
+
+    Returns:
+      bool that shows if database is empty
+    &#34;&#34;&#34;
+    return len(self.database) == 0
+
+  def to_json(self) -&gt; str:
+    &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+    Returns:
+      string of the database in JSON format
+    &#34;&#34;&#34;
+    document = []
+    # iterate through all items and create JSON document
+    for (url, is_seed, html) in self.database:
+      document.append({
+          &#34;url&#34;: url,
+          &#34;is_seed&#34;: str(is_seed),
+          &#34;html document&#34;: html
+      })
+    return json.dumps(document)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.add_entry"><code class="name flex">
+<span>def <span class="ident">add_entry</span></span>(<span>self, url: str, is_seed: bool, html_document: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds a new touple of url and html document to the database</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>string of the crawled page</dd>
+<dt><strong><code>is_seed</code></strong></dt>
+<dd>is url seed?</dd>
+<dt><strong><code>html_document</code></strong></dt>
+<dd>string of the recieved html document</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_entry(self, url: str, is_seed: bool, html_document: str) -&gt; None:
+  &#34;&#34;&#34;Adds a new touple of url and html document to the database
+
+  Args:
+    url: string of the crawled page
+    is_seed: is url seed?
+    html_document: string of the recieved html document
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.database.append((url, is_seed, html_document))</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.get_entry"><code class="name flex">
+<span>def <span class="ident">get_entry</span></span>(<span>self) ‑> (<class 'str'>, <class 'bool'>, <class 'str'>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns an entry from the database</p>
+<h2 id="returns">Returns</h2>
+<p>triple of (url, is_seed,html document)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_entry(self) -&gt; (str, bool, str):
+  &#34;&#34;&#34;Returns an entry from the database
+
+  Returns:
+    triple of (url, is_seed,html document)
+  &#34;&#34;&#34;
+  # return new url if available
+  if len(self.database) == 0:
+    return None, None, None
+  else:
+    return self.database.pop()</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.is_empty"><code class="name flex">
+<span>def <span class="ident">is_empty</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if database is empty</p>
+<h2 id="returns">Returns</h2>
+<p>bool that shows if database is empty</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_empty(self) -&gt; bool:
+  &#34;&#34;&#34;Checks if database is empty
+
+  Returns:
+    bool that shows if database is empty
+  &#34;&#34;&#34;
+  return len(self.database) == 0</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the database in JSON format so it can be safed</p>
+<h2 id="returns">Returns</h2>
+<p>string of the database in JSON format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self) -&gt; str:
+  &#34;&#34;&#34;Returns the database in JSON format so it can be safed
+
+  Returns:
+    string of the database in JSON format
+  &#34;&#34;&#34;
+  document = []
+  # iterate through all items and create JSON document
+  for (url, is_seed, html) in self.database:
+    document.append({
+        &#34;url&#34;: url,
+        &#34;is_seed&#34;: str(is_seed),
+        &#34;html document&#34;: html
+    })
+  return json.dumps(document)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot" href="index.html">cybersecurity-crawler.src.crawler_bot</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.get_relative_distance" href="#cybersecurity-crawler.src.crawler_bot.storage.get_relative_distance">get_relative_distance</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs" href="#cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs">CrawledURLs</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.add_crawled_url" href="#cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.add_crawled_url">add_crawled_url</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.crawl_limit_reached" href="#cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.crawl_limit_reached">crawl_limit_reached</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.CrawledURLs.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers" href="#cybersecurity-crawler.src.crawler_bot.storage.DomainTimers">DomainTimers</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.set_timer" href="#cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.set_timer">set_timer</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.time_until_next_request" href="#cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.time_until_next_request">time_until_next_request</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.DomainTimers.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase">HTMLDatabase</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.add_html_document" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.add_html_document">add_html_document</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.get_list_of_relevant_urls" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.get_list_of_relevant_urls">get_list_of_relevant_urls</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.is_empty" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.is_empty">is_empty</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.sort_after_relevance" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.sort_after_relevance">sort_after_relevance</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabase.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabaseEntry" href="#cybersecurity-crawler.src.crawler_bot.storage.HTMLDatabaseEntry">HTMLDatabaseEntry</a></code></h4>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase" href="#cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase">RobotsTXTDatabase</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.can_fetch" href="#cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.can_fetch">can_fetch</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.get_crawl_delay" href="#cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.get_crawl_delay">get_crawl_delay</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.retrieve_robots_txt" href="#cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.retrieve_robots_txt">retrieve_robots_txt</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.RobotsTXTDatabase.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.SetQueue" href="#cybersecurity-crawler.src.crawler_bot.storage.SetQueue">SetQueue</a></code></h4>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLMap" href="#cybersecurity-crawler.src.crawler_bot.storage.URLMap">URLMap</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLMap.add_url_path" href="#cybersecurity-crawler.src.crawler_bot.storage.URLMap.add_url_path">add_url_path</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLMap.draw_map" href="#cybersecurity-crawler.src.crawler_bot.storage.URLMap.draw_map">draw_map</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLMap.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.URLMap.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLQueue" href="#cybersecurity-crawler.src.crawler_bot.storage.URLQueue">URLQueue</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.add_url" href="#cybersecurity-crawler.src.crawler_bot.storage.URLQueue.add_url">add_url</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.get_url" href="#cybersecurity-crawler.src.crawler_bot.storage.URLQueue.get_url">get_url</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.URLQueue.is_empty" href="#cybersecurity-crawler.src.crawler_bot.storage.URLQueue.is_empty">is_empty</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase" href="#cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase">UnprocessedHTMLDatabase</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.add_entry" href="#cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.add_entry">add_entry</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.get_entry" href="#cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.get_entry">get_entry</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.is_empty" href="#cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.is_empty">is_empty</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.to_json" href="#cybersecurity-crawler.src.crawler_bot.storage.UnprocessedHTMLDatabase.to_json">to_json</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

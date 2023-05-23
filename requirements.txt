@@ -1,0 +1,12 @@
+beautifulsoup4==4.12.2
+diagrams==0.23.3
+matplotlib==3.7.1
+networkx==3.1
+numpy==1.24.2
+Protego==0.2.1
+Requests==2.30.0
+sentence_transformers==2.2.2
+torch==2.0.1
+trafilatura==1.6.0
+transformers==4.29.1
+urllib3==1.26.12

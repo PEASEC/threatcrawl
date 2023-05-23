@@ -1,0 +1,14 @@
+Pipfile*
+.vscode
+/cybersecurity_crawler/__pycache__
+pylintrc
+.style.yapf
+/logs/*
+!/logs/.gitkeep
+__pycache__
+assets/*
+!assets/20221204_233927_dataset.json
+!assets/20221204_233927_seed.csv
+!assets/20221204_url_list.csv
+!assets/20221207_223612_ground_truth_vectors.json
+!assets/blacklist.json

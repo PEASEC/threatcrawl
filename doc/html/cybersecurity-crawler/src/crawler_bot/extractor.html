@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>cybersecurity-crawler.src.crawler_bot.extractor API documentation</title>
+<meta name="description" content="Contains classes for the extraction process" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>cybersecurity-crawler.src.crawler_bot.extractor</code></h1>
+</header>
+<section id="section-intro">
+<p>Contains classes for the extraction process</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Contains classes for the extraction process
+&#34;&#34;&#34;
+
+import time
+from bs4 import BeautifulSoup
+import json
+import re
+from urllib.parse import urlparse
+
+from src.crawler_bot import custom_logging, monitoring, storage, classification
+from src.crawler_bot.tools import extract_main_domain, extract_main_domain_plus_tld
+from src.crawler_bot.config import GROUND_TRUTH_VECTORS_FILE
+
+DOMAIN_FORMAT = re.compile(
+    r&#34;(?:^(\w{1,255}):(.{1,255})@|^)&#34;  # http basic authentication [optional]
+    r&#34;(?:(?:(?=\S{0,253}(?:$|:))&#34;  # check full domain length to be less than or equal to 253 (starting after http basic auth, stopping before port)
+    r&#34;((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+&#34;  # check for at least one subdomain (maximum length per subdomain: 63 characters), dashes in between allowed
+    r&#34;(?:[a-z0-9]{1,63})))&#34;  # check for top level domain, no dashes allowed
+    r&#34;|localhost)&#34;  # accept also &#34;localhost&#34; only
+    r&#34;(:\d{1,5})?&#34;,  # port [optional]
+    re.IGNORECASE)
+SCHEME_FORMAT = re.compile(
+    r&#34;^(http|hxxp|ftp|fxp)s?$&#34;,  # scheme: http(s) or ftp(s)
+    re.IGNORECASE)
+DOMAIN_PLUS_TLD_FORMAT = re.compile(r&#34;[^.]+\.[^.]+$&#34;)
+MAIN_DOMAIN_ONLY_FORMAT = re.compile(r&#34;([^.]+)\.[^.]+$&#34;)
+
+
+class Extractor:
+  &#34;&#34;&#34;Decides if websites are relevant and extracts the URLs out of it
+
+  Attributes:
+    state: describes the state of the thread (running, stopped, idle)
+    id_number: id of this specific instance of extractor
+    name: name of this specific instance of extractor for logging
+    logger: instance of the logging module
+    html_database: instance of the html database
+    unprocessed_html_database: instance of the unprocessed html database
+    url_queue: instance of the url queue
+    crawled_urls: instance of the list of crawled urls
+    url_map: instance of the url map
+    monitor: the global monitor to check stop requirements
+    classifier: the used classifier
+&#34;&#34;&#34;
+
+  def __init__(self, id_number: int, logger: custom_logging.Logger,
+               html_database: storage.HTMLDatabase,
+               unprocessed_html_database: storage.UnprocessedHTMLDatabase,
+               url_queue: storage.URLQueue, crawled_urls: storage.CrawledURLs,
+               url_map: storage.URLMap, monitor: monitoring.GlobalMonitor):
+    &#34;&#34;&#34;Inits Extractor
+
+    Args:
+      id_number: id of this specific instance of extractor
+      logger: instance of the logging module
+      html_database: instance of the html database
+      unprocessed_html_database: instance of the unprocessed html database
+      url_queue: instance of the url queue
+      crawled_urls: instance of the list of crawled urls
+      url_map: instance of the url map
+      monitor: the global monitor to check stop requirements
+
+    &#34;&#34;&#34;
+    self.state = monitoring.ThreadState.RUNNING
+    self.id_number = id_number
+    self.name = &#34;Extractor#&#34; + str(self.id_number)
+    self.logger = logger
+    self.html_database = html_database
+    self.unprocessed_html_database = unprocessed_html_database
+    self.url_queue = url_queue
+    self.crawled_urls = crawled_urls
+    self.url_map = url_map
+    self.monitor = monitor
+    self.classifier = classification.Classifier(id_number, logger)
+    self.classifier.load_parameters_from_file(GROUND_TRUTH_VECTORS_FILE)
+
+    # load blacklist
+    with open(&#34;assets/blacklist.json&#34;, encoding=&#34;utf-8&#34;) as f:
+      self.blacklist = json.load(f)
+
+    self.logger.log_debug(self.name, &#34;initialized&#34;)
+
+  def nofollow_tag_present(self, crawled_url: str,
+                           parsed_html_document: BeautifulSoup) -&gt; bool:
+    &#34;&#34;&#34;Checks if there is a nofollow robots meta tag in the given document
+
+    https://developers.google.com/search/docs/advanced/robots/robots_meta_tag
+
+    Examples:
+      &lt;meta content=&#34;noindex,nofollow&#34; name=&#34;robots&#34;/&gt;
+      &lt;meta content=&#34;follow&#34; name=&#34;robots&#34;/&gt;
+
+    Args:
+      crawled_url: the url the content comes from
+      parsed_html_document: BeautifulSoup object which may contain the nofollow
+                              robots meta tag
+
+    Returns:
+      boolean indicating if the given document has the nofollow robots meta tag
+    &#34;&#34;&#34;
+    for tag in parsed_html_document.find_all(&#34;meta&#34;, attrs={&#34;name&#34;: &#34;robots&#34;}):
+      if not &#34;content&#34; in tag:
+        return False
+      for content in tag[&#34;content&#34;].split(&#34;,&#34;):
+        if content.strip() in [&#34;nofollow&#34;, &#34;none&#34;]:
+          self.logger.log_debug(
+              self.name, &#34;url &#34; + crawled_url + &#34; contains a nofollow meta tag&#34;)
+          return True
+    return False
+
+  def is_valid(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if the given url is valid
+
+    https://stackoverflow.com/questions/7160737/how-to-validate-a-url-in-python-malformed-or-not
+
+    Args:
+      url: string that needs to be checked
+
+    Returns:
+      bool that shows if given url is valid
+    &#34;&#34;&#34;
+    if url is None or url == &#34;&#34;:
+      return False
+
+    url = url.strip()
+
+    # no url given
+    if not url:
+      self.logger.log_debug(self.name, &#34;empty url detected =&gt; Invalid&#34;)
+      return False
+
+    # url too long
+    if len(url) &gt; 2048:
+      self.logger.log_debug(self.name, &#34;url too long (&#34; + url + &#34;)&#34;)
+      return False
+
+    result = urlparse(url)
+    scheme = result.scheme
+    domain = result.netloc
+
+    # url has no scheme
+    if not scheme:
+      self.logger.log_debug(self.name,
+                            &#34;url has no scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # url has no valid scheme
+    if not re.fullmatch(SCHEME_FORMAT, scheme):
+      self.logger.log_debug(self.name,
+                            &#34;url has no valid scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # url has no domain
+    if not domain:
+      self.logger.log_debug(self.name,
+                            &#34;url has no domain (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # domain is malformed
+    if not re.fullmatch(DOMAIN_FORMAT, domain):
+      self.logger.log_debug(self.name,
+                            &#34;url is malformed (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # if all tests are negative, URL is probably valid
+    return True
+
+  def is_on_blacklist(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if URL or parts of it is on blacklist
+
+    Args:
+      url: string of the url to check
+
+    Returns:
+      bool that indicates if url is on blacklist
+    &#34;&#34;&#34;
+    # check if on blacklist
+    # check if main domain is on blacklist
+    if extract_main_domain(url) in self.blacklist[&#34;main_domains&#34;]:
+      self.logger.log_debug(self.name, &#34;domain is on blacklist (&#34; + url + &#34;)&#34;)
+      return True
+    # check if tld + main domain is on blacklist
+    if extract_main_domain_plus_tld(url) in self.blacklist[&#34;main_domains+tlds&#34;]:
+      self.logger.log_debug(self.name,
+                            &#34;domain+tld is on blacklist (&#34; + url + &#34;)&#34;)
+      return True
+    # check if extension is on blacklist
+    for extension in self.blacklist[&#34;extensions&#34;]:
+      if urlparse(url).path[-(len(extension)):] == extension:
+        self.logger.log_debug(self.name,
+                              &#34;extension is on blacklist (&#34; + url + &#34;)&#34;)
+        return True
+
+    # if every test is passed, url is not on blacklist
+    return False
+
+  def relative_to_absolute_url(self, relative_url: str, parent_url: str) -&gt; str:
+    &#34;&#34;&#34;Attempts to transform a relative url to an absolute url
+
+    Args:
+      relative_url: the url that needs to be transformed
+      parent_url: the url of the website that contained url
+
+    Returns:
+      an attempt of an absolute url, not nessecarily a valid url
+
+    Example:
+      parent_url = https://www.google.com/testpath/test.html?myparameter=1
+
+      /mytest.html =&gt; https://www.google.com/mytest.html
+      mytest.html =&gt; https://www.google.com/testpath/mytest.html
+
+    &#34;&#34;&#34;
+    # parse the parent url
+    parsed_parent = urlparse(parent_url)
+    scheme_and_domain = parsed_parent.scheme + &#34;://&#34; + parsed_parent.netloc
+    if relative_url[0] == &#34;/&#34;:
+      # url starts with a slash, so it just has to be appended to the main url
+      absolute_url = scheme_and_domain + relative_url
+    else:
+      # url doesn&#39;t start with slash, so it might be just the last part of the
+      # url (e.g. file.html)
+      if parsed_parent.path == &#34;&#34;:
+        # no path, so just add it to the domain
+        absolute_url = scheme_and_domain + &#34;/&#34; + relative_url
+      else:
+        # attach to domain and path but cut away everything after the last slash
+        absolute_url = scheme_and_domain + parsed_parent.path[:parsed_parent.
+                                                              path.rindex(&#34;/&#34;) +
+                                                              1] + relative_url
+
+    self.logger.log_debug(
+        self.name, &#34;Transformed URL &#34; + relative_url + &#34; to &#34; + absolute_url)
+    return absolute_url
+
+  def extract_urls(self, parsed_html_document: BeautifulSoup,
+                   crawled_url: str) -&gt; list[str]:
+    &#34;&#34;&#34;Extracts all urls out of a given html document
+
+    Args:
+      parsed_html_document: BeautifulSoup object where urls should be extracted
+      crawled_url: string of the url the html document belongs to
+
+    Returns:
+      a list of extracted urls
+    &#34;&#34;&#34;
+    # extract href property from all a elements that have it and don&#39;t start
+    # with javascript:
+    hrefs = [
+        item[&#34;href&#34;].strip()
+        for item in parsed_html_document.find_all(&#34;a&#34;, href=True)
+    ]
+
+    urls = []
+
+    # remove all hrefs that are empty, just anchors (#) or refer to other
+    # protocols like fttp://, mailto:, javascript: etc.
+    for href in hrefs:
+      if len(href) &lt;= 0:
+        continue
+      if href[0] == &#34;#&#34;:
+        continue
+      if re.search(&#34;^[a-zA-Z]+:&#34;, href) is not None:
+        # url has a protocol at the beginning, remove if not http or https
+        if len(href) &gt;= 5 and href[:4] != &#34;http&#34; and href[:5] != &#34;https&#34;:
+          continue
+      urls.append(href)
+
+    # only return urls that are valid and not in blacklist
+    valid_urls = []
+    for url in urls:
+      # check if url is valid url
+      if not self.is_valid(url):
+        # if not, it might be a relative url
+        url = self.relative_to_absolute_url(url, crawled_url)
+        # check again if now valid
+        if not self.is_valid(url):
+          # still not valid, so skip this one
+          continue
+
+      # check if url is blacklisted
+      if self.is_on_blacklist(url):
+        # url is on blacklist, skip this one
+        continue
+
+      # all checks went through, url is valid and not on blacklist
+      valid_urls.append(url)
+
+    # return list without duplicates
+    return list(dict.fromkeys(valid_urls))
+
+  def extract(self) -&gt; None:
+    &#34;&#34;&#34;extracts the urls from the next html document in line
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    # get next html page
+    crawled_url, is_seed, html_document = self.unprocessed_html_database.get_entry(
+    )
+
+    if crawled_url is None:
+      return
+
+    self.logger.log_info(self.name, &#34;processing: &#34; + crawled_url)
+
+    # parse the document
+    parsed_html_document = BeautifulSoup(html_document, &#34;lxml&#34;)
+
+    # classify document
+    classification_result = self.classifier.is_relevant(crawled_url,
+                                                        html_document)
+
+    # if page is not relevant we don&#39;t extract urls
+    if (not classification_result[&#34;relevant&#34;] and
+        not is_seed) or self.nofollow_tag_present(crawled_url,
+                                                  parsed_html_document):
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+          classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+    # if page is relevant but has a nofollow tag we save it as relevant but
+    # dont extract urls
+    elif self.nofollow_tag_present(crawled_url, parsed_html_document):
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+          classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+    # page is relevant or seed and doesn&#39;t contain nofollow tag -&gt; extract urls
+    else:
+      extracted_urls = self.extract_urls(parsed_html_document, crawled_url)
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;],
+          extracted_urls, classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+      # add extracted urls to url map
+      for exracted_url in extracted_urls:
+        self.url_map.add_url_path(crawled_url, exracted_url)
+
+      # add to urls queue but only if not already crawled and only if
+      # retrievers are still running
+      if not self.crawled_urls.crawl_limit_reached():
+        for extracted_url in extracted_urls:
+          if extracted_url not in self.crawled_urls.crawled_urls:
+            self.url_queue.add_url(extracted_url)
+
+  def start_extractor(self) -&gt; None:
+    &#34;&#34;&#34;Starts the extractor
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    while self.state != monitoring.ThreadState.STOPPED:
+
+      # check if extractor state needs to be changed
+
+      # 1. crawl limit reached and no unprocessed htmls left -&gt; stop extractor
+      if self.crawled_urls.crawl_limit_reached(
+      ) and self.unprocessed_html_database.is_empty(
+      ) and self.monitor.retrievers_all_idle_or_stopped():
+        self.stop_extractor(&#34;Crawl limit reached&#34;)
+        continue
+
+      # 2. url queue empty + all extractors stopped/idle
+      # + all retrievers stopped/idle + unprocessed htmls is empty
+      # -&gt; stop extractor
+      if self.url_queue.is_empty() and self.unprocessed_html_database.is_empty(
+      ) and self.monitor.retrievers_all_idle_or_stopped(
+      ) and self.monitor.extractors_all_idle_or_stopped():
+        self.stop_extractor(
+            &#34;url queue empty, html queue empty and no reciever or extractor running&#34;
+        )
+        continue
+
+      # 3. html database empty -&gt; idle thread
+      if self.unprocessed_html_database.is_empty():
+        self.idle_extractor(&#34;crawled urls database is empty&#34;)
+        time.sleep(0.1)
+        continue
+      else:
+        self.continue_extractor()
+      self.extract()
+
+    self.logger.log_info(self.name, &#34;stopped&#34;)
+
+  def continue_extractor(self) -&gt; None:
+    &#34;&#34;&#34;Puts extractor back in running mode
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;putting extractor into running&#34;)
+    self.monitor.extractor_continue(self.state)
+    self.state = monitoring.ThreadState.RUNNING
+
+  def idle_extractor(self, message: str) -&gt; None:
+    &#34;&#34;&#34;Puts extractor into idle
+
+    Arg:
+      message: string why the extractor is put into idle
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name,
+                          &#34;putting extractor into idle (&#34; + message + &#34;)&#34;)
+    self.monitor.extractor_idle(self.state)
+    self.state = monitoring.ThreadState.IDLE
+
+  def stop_extractor(self, message: str) -&gt; None:
+    &#34;&#34;&#34;Stops the execution of the extractor
+
+    Arg:
+      message: string why the extractor is stopped
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_info(self.name, &#34;stopping (&#34; + message + &#34;)&#34;)
+    self.monitor.extractor_stop(self.state)
+    self.state = monitoring.ThreadState.STOPPED</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor"><code class="flex name class">
+<span>class <span class="ident">Extractor</span></span>
+<span>(</span><span>id_number: int, logger: src.crawler_bot.custom_logging.Logger, html_database: src.crawler_bot.storage.HTMLDatabase, unprocessed_html_database: src.crawler_bot.storage.UnprocessedHTMLDatabase, url_queue: src.crawler_bot.storage.URLQueue, crawled_urls: src.crawler_bot.storage.CrawledURLs, url_map: src.crawler_bot.storage.URLMap, monitor: src.crawler_bot.monitoring.GlobalMonitor)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decides if websites are relevant and extracts the URLs out of it</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>state</code></strong></dt>
+<dd>describes the state of the thread (running, stopped, idle)</dd>
+<dt><strong><code>id_number</code></strong></dt>
+<dd>id of this specific instance of extractor</dd>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of this specific instance of extractor for logging</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the logging module</dd>
+<dt><strong><code>html_database</code></strong></dt>
+<dd>instance of the html database</dd>
+<dt><strong><code>unprocessed_html_database</code></strong></dt>
+<dd>instance of the unprocessed html database</dd>
+<dt><strong><code>url_queue</code></strong></dt>
+<dd>instance of the url queue</dd>
+<dt><strong><code>crawled_urls</code></strong></dt>
+<dd>instance of the list of crawled urls</dd>
+<dt><strong><code>url_map</code></strong></dt>
+<dd>instance of the url map</dd>
+<dt><strong><code>monitor</code></strong></dt>
+<dd>the global monitor to check stop requirements</dd>
+<dt><strong><code>classifier</code></strong></dt>
+<dd>the used classifier</dd>
+</dl>
+<p>Inits Extractor</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>id_number</code></strong></dt>
+<dd>id of this specific instance of extractor</dd>
+<dt><strong><code>logger</code></strong></dt>
+<dd>instance of the logging module</dd>
+<dt><strong><code>html_database</code></strong></dt>
+<dd>instance of the html database</dd>
+<dt><strong><code>unprocessed_html_database</code></strong></dt>
+<dd>instance of the unprocessed html database</dd>
+<dt><strong><code>url_queue</code></strong></dt>
+<dd>instance of the url queue</dd>
+<dt><strong><code>crawled_urls</code></strong></dt>
+<dd>instance of the list of crawled urls</dd>
+<dt><strong><code>url_map</code></strong></dt>
+<dd>instance of the url map</dd>
+<dt><strong><code>monitor</code></strong></dt>
+<dd>the global monitor to check stop requirements</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Extractor:
+  &#34;&#34;&#34;Decides if websites are relevant and extracts the URLs out of it
+
+  Attributes:
+    state: describes the state of the thread (running, stopped, idle)
+    id_number: id of this specific instance of extractor
+    name: name of this specific instance of extractor for logging
+    logger: instance of the logging module
+    html_database: instance of the html database
+    unprocessed_html_database: instance of the unprocessed html database
+    url_queue: instance of the url queue
+    crawled_urls: instance of the list of crawled urls
+    url_map: instance of the url map
+    monitor: the global monitor to check stop requirements
+    classifier: the used classifier
+&#34;&#34;&#34;
+
+  def __init__(self, id_number: int, logger: custom_logging.Logger,
+               html_database: storage.HTMLDatabase,
+               unprocessed_html_database: storage.UnprocessedHTMLDatabase,
+               url_queue: storage.URLQueue, crawled_urls: storage.CrawledURLs,
+               url_map: storage.URLMap, monitor: monitoring.GlobalMonitor):
+    &#34;&#34;&#34;Inits Extractor
+
+    Args:
+      id_number: id of this specific instance of extractor
+      logger: instance of the logging module
+      html_database: instance of the html database
+      unprocessed_html_database: instance of the unprocessed html database
+      url_queue: instance of the url queue
+      crawled_urls: instance of the list of crawled urls
+      url_map: instance of the url map
+      monitor: the global monitor to check stop requirements
+
+    &#34;&#34;&#34;
+    self.state = monitoring.ThreadState.RUNNING
+    self.id_number = id_number
+    self.name = &#34;Extractor#&#34; + str(self.id_number)
+    self.logger = logger
+    self.html_database = html_database
+    self.unprocessed_html_database = unprocessed_html_database
+    self.url_queue = url_queue
+    self.crawled_urls = crawled_urls
+    self.url_map = url_map
+    self.monitor = monitor
+    self.classifier = classification.Classifier(id_number, logger)
+    self.classifier.load_parameters_from_file(GROUND_TRUTH_VECTORS_FILE)
+
+    # load blacklist
+    with open(&#34;assets/blacklist.json&#34;, encoding=&#34;utf-8&#34;) as f:
+      self.blacklist = json.load(f)
+
+    self.logger.log_debug(self.name, &#34;initialized&#34;)
+
+  def nofollow_tag_present(self, crawled_url: str,
+                           parsed_html_document: BeautifulSoup) -&gt; bool:
+    &#34;&#34;&#34;Checks if there is a nofollow robots meta tag in the given document
+
+    https://developers.google.com/search/docs/advanced/robots/robots_meta_tag
+
+    Examples:
+      &lt;meta content=&#34;noindex,nofollow&#34; name=&#34;robots&#34;/&gt;
+      &lt;meta content=&#34;follow&#34; name=&#34;robots&#34;/&gt;
+
+    Args:
+      crawled_url: the url the content comes from
+      parsed_html_document: BeautifulSoup object which may contain the nofollow
+                              robots meta tag
+
+    Returns:
+      boolean indicating if the given document has the nofollow robots meta tag
+    &#34;&#34;&#34;
+    for tag in parsed_html_document.find_all(&#34;meta&#34;, attrs={&#34;name&#34;: &#34;robots&#34;}):
+      if not &#34;content&#34; in tag:
+        return False
+      for content in tag[&#34;content&#34;].split(&#34;,&#34;):
+        if content.strip() in [&#34;nofollow&#34;, &#34;none&#34;]:
+          self.logger.log_debug(
+              self.name, &#34;url &#34; + crawled_url + &#34; contains a nofollow meta tag&#34;)
+          return True
+    return False
+
+  def is_valid(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if the given url is valid
+
+    https://stackoverflow.com/questions/7160737/how-to-validate-a-url-in-python-malformed-or-not
+
+    Args:
+      url: string that needs to be checked
+
+    Returns:
+      bool that shows if given url is valid
+    &#34;&#34;&#34;
+    if url is None or url == &#34;&#34;:
+      return False
+
+    url = url.strip()
+
+    # no url given
+    if not url:
+      self.logger.log_debug(self.name, &#34;empty url detected =&gt; Invalid&#34;)
+      return False
+
+    # url too long
+    if len(url) &gt; 2048:
+      self.logger.log_debug(self.name, &#34;url too long (&#34; + url + &#34;)&#34;)
+      return False
+
+    result = urlparse(url)
+    scheme = result.scheme
+    domain = result.netloc
+
+    # url has no scheme
+    if not scheme:
+      self.logger.log_debug(self.name,
+                            &#34;url has no scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # url has no valid scheme
+    if not re.fullmatch(SCHEME_FORMAT, scheme):
+      self.logger.log_debug(self.name,
+                            &#34;url has no valid scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # url has no domain
+    if not domain:
+      self.logger.log_debug(self.name,
+                            &#34;url has no domain (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # domain is malformed
+    if not re.fullmatch(DOMAIN_FORMAT, domain):
+      self.logger.log_debug(self.name,
+                            &#34;url is malformed (&#34; + url + &#34;) =&gt; Invalid&#34;)
+      return False
+
+    # if all tests are negative, URL is probably valid
+    return True
+
+  def is_on_blacklist(self, url: str) -&gt; bool:
+    &#34;&#34;&#34;Checks if URL or parts of it is on blacklist
+
+    Args:
+      url: string of the url to check
+
+    Returns:
+      bool that indicates if url is on blacklist
+    &#34;&#34;&#34;
+    # check if on blacklist
+    # check if main domain is on blacklist
+    if extract_main_domain(url) in self.blacklist[&#34;main_domains&#34;]:
+      self.logger.log_debug(self.name, &#34;domain is on blacklist (&#34; + url + &#34;)&#34;)
+      return True
+    # check if tld + main domain is on blacklist
+    if extract_main_domain_plus_tld(url) in self.blacklist[&#34;main_domains+tlds&#34;]:
+      self.logger.log_debug(self.name,
+                            &#34;domain+tld is on blacklist (&#34; + url + &#34;)&#34;)
+      return True
+    # check if extension is on blacklist
+    for extension in self.blacklist[&#34;extensions&#34;]:
+      if urlparse(url).path[-(len(extension)):] == extension:
+        self.logger.log_debug(self.name,
+                              &#34;extension is on blacklist (&#34; + url + &#34;)&#34;)
+        return True
+
+    # if every test is passed, url is not on blacklist
+    return False
+
+  def relative_to_absolute_url(self, relative_url: str, parent_url: str) -&gt; str:
+    &#34;&#34;&#34;Attempts to transform a relative url to an absolute url
+
+    Args:
+      relative_url: the url that needs to be transformed
+      parent_url: the url of the website that contained url
+
+    Returns:
+      an attempt of an absolute url, not nessecarily a valid url
+
+    Example:
+      parent_url = https://www.google.com/testpath/test.html?myparameter=1
+
+      /mytest.html =&gt; https://www.google.com/mytest.html
+      mytest.html =&gt; https://www.google.com/testpath/mytest.html
+
+    &#34;&#34;&#34;
+    # parse the parent url
+    parsed_parent = urlparse(parent_url)
+    scheme_and_domain = parsed_parent.scheme + &#34;://&#34; + parsed_parent.netloc
+    if relative_url[0] == &#34;/&#34;:
+      # url starts with a slash, so it just has to be appended to the main url
+      absolute_url = scheme_and_domain + relative_url
+    else:
+      # url doesn&#39;t start with slash, so it might be just the last part of the
+      # url (e.g. file.html)
+      if parsed_parent.path == &#34;&#34;:
+        # no path, so just add it to the domain
+        absolute_url = scheme_and_domain + &#34;/&#34; + relative_url
+      else:
+        # attach to domain and path but cut away everything after the last slash
+        absolute_url = scheme_and_domain + parsed_parent.path[:parsed_parent.
+                                                              path.rindex(&#34;/&#34;) +
+                                                              1] + relative_url
+
+    self.logger.log_debug(
+        self.name, &#34;Transformed URL &#34; + relative_url + &#34; to &#34; + absolute_url)
+    return absolute_url
+
+  def extract_urls(self, parsed_html_document: BeautifulSoup,
+                   crawled_url: str) -&gt; list[str]:
+    &#34;&#34;&#34;Extracts all urls out of a given html document
+
+    Args:
+      parsed_html_document: BeautifulSoup object where urls should be extracted
+      crawled_url: string of the url the html document belongs to
+
+    Returns:
+      a list of extracted urls
+    &#34;&#34;&#34;
+    # extract href property from all a elements that have it and don&#39;t start
+    # with javascript:
+    hrefs = [
+        item[&#34;href&#34;].strip()
+        for item in parsed_html_document.find_all(&#34;a&#34;, href=True)
+    ]
+
+    urls = []
+
+    # remove all hrefs that are empty, just anchors (#) or refer to other
+    # protocols like fttp://, mailto:, javascript: etc.
+    for href in hrefs:
+      if len(href) &lt;= 0:
+        continue
+      if href[0] == &#34;#&#34;:
+        continue
+      if re.search(&#34;^[a-zA-Z]+:&#34;, href) is not None:
+        # url has a protocol at the beginning, remove if not http or https
+        if len(href) &gt;= 5 and href[:4] != &#34;http&#34; and href[:5] != &#34;https&#34;:
+          continue
+      urls.append(href)
+
+    # only return urls that are valid and not in blacklist
+    valid_urls = []
+    for url in urls:
+      # check if url is valid url
+      if not self.is_valid(url):
+        # if not, it might be a relative url
+        url = self.relative_to_absolute_url(url, crawled_url)
+        # check again if now valid
+        if not self.is_valid(url):
+          # still not valid, so skip this one
+          continue
+
+      # check if url is blacklisted
+      if self.is_on_blacklist(url):
+        # url is on blacklist, skip this one
+        continue
+
+      # all checks went through, url is valid and not on blacklist
+      valid_urls.append(url)
+
+    # return list without duplicates
+    return list(dict.fromkeys(valid_urls))
+
+  def extract(self) -&gt; None:
+    &#34;&#34;&#34;extracts the urls from the next html document in line
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    # get next html page
+    crawled_url, is_seed, html_document = self.unprocessed_html_database.get_entry(
+    )
+
+    if crawled_url is None:
+      return
+
+    self.logger.log_info(self.name, &#34;processing: &#34; + crawled_url)
+
+    # parse the document
+    parsed_html_document = BeautifulSoup(html_document, &#34;lxml&#34;)
+
+    # classify document
+    classification_result = self.classifier.is_relevant(crawled_url,
+                                                        html_document)
+
+    # if page is not relevant we don&#39;t extract urls
+    if (not classification_result[&#34;relevant&#34;] and
+        not is_seed) or self.nofollow_tag_present(crawled_url,
+                                                  parsed_html_document):
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+          classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+    # if page is relevant but has a nofollow tag we save it as relevant but
+    # dont extract urls
+    elif self.nofollow_tag_present(crawled_url, parsed_html_document):
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+          classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+    # page is relevant or seed and doesn&#39;t contain nofollow tag -&gt; extract urls
+    else:
+      extracted_urls = self.extract_urls(parsed_html_document, crawled_url)
+      self.html_database.add_html_document(
+          crawled_url, html_document, classification_result[&#34;relevant&#34;],
+          extracted_urls, classification_result[&#34;distances&#34;],
+          classification_result[&#34;relative_distances&#34;],
+          classification_result[&#34;guessed_category&#34;])
+      # add extracted urls to url map
+      for exracted_url in extracted_urls:
+        self.url_map.add_url_path(crawled_url, exracted_url)
+
+      # add to urls queue but only if not already crawled and only if
+      # retrievers are still running
+      if not self.crawled_urls.crawl_limit_reached():
+        for extracted_url in extracted_urls:
+          if extracted_url not in self.crawled_urls.crawled_urls:
+            self.url_queue.add_url(extracted_url)
+
+  def start_extractor(self) -&gt; None:
+    &#34;&#34;&#34;Starts the extractor
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    while self.state != monitoring.ThreadState.STOPPED:
+
+      # check if extractor state needs to be changed
+
+      # 1. crawl limit reached and no unprocessed htmls left -&gt; stop extractor
+      if self.crawled_urls.crawl_limit_reached(
+      ) and self.unprocessed_html_database.is_empty(
+      ) and self.monitor.retrievers_all_idle_or_stopped():
+        self.stop_extractor(&#34;Crawl limit reached&#34;)
+        continue
+
+      # 2. url queue empty + all extractors stopped/idle
+      # + all retrievers stopped/idle + unprocessed htmls is empty
+      # -&gt; stop extractor
+      if self.url_queue.is_empty() and self.unprocessed_html_database.is_empty(
+      ) and self.monitor.retrievers_all_idle_or_stopped(
+      ) and self.monitor.extractors_all_idle_or_stopped():
+        self.stop_extractor(
+            &#34;url queue empty, html queue empty and no reciever or extractor running&#34;
+        )
+        continue
+
+      # 3. html database empty -&gt; idle thread
+      if self.unprocessed_html_database.is_empty():
+        self.idle_extractor(&#34;crawled urls database is empty&#34;)
+        time.sleep(0.1)
+        continue
+      else:
+        self.continue_extractor()
+      self.extract()
+
+    self.logger.log_info(self.name, &#34;stopped&#34;)
+
+  def continue_extractor(self) -&gt; None:
+    &#34;&#34;&#34;Puts extractor back in running mode
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name, &#34;putting extractor into running&#34;)
+    self.monitor.extractor_continue(self.state)
+    self.state = monitoring.ThreadState.RUNNING
+
+  def idle_extractor(self, message: str) -&gt; None:
+    &#34;&#34;&#34;Puts extractor into idle
+
+    Arg:
+      message: string why the extractor is put into idle
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_debug(self.name,
+                          &#34;putting extractor into idle (&#34; + message + &#34;)&#34;)
+    self.monitor.extractor_idle(self.state)
+    self.state = monitoring.ThreadState.IDLE
+
+  def stop_extractor(self, message: str) -&gt; None:
+    &#34;&#34;&#34;Stops the execution of the extractor
+
+    Arg:
+      message: string why the extractor is stopped
+
+    Returns:
+      None
+    &#34;&#34;&#34;
+    self.logger.log_info(self.name, &#34;stopping (&#34; + message + &#34;)&#34;)
+    self.monitor.extractor_stop(self.state)
+    self.state = monitoring.ThreadState.STOPPED</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.continue_extractor"><code class="name flex">
+<span>def <span class="ident">continue_extractor</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Puts extractor back in running mode</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def continue_extractor(self) -&gt; None:
+  &#34;&#34;&#34;Puts extractor back in running mode
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name, &#34;putting extractor into running&#34;)
+  self.monitor.extractor_continue(self.state)
+  self.state = monitoring.ThreadState.RUNNING</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract"><code class="name flex">
+<span>def <span class="ident">extract</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>extracts the urls from the next html document in line</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract(self) -&gt; None:
+  &#34;&#34;&#34;extracts the urls from the next html document in line
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  # get next html page
+  crawled_url, is_seed, html_document = self.unprocessed_html_database.get_entry(
+  )
+
+  if crawled_url is None:
+    return
+
+  self.logger.log_info(self.name, &#34;processing: &#34; + crawled_url)
+
+  # parse the document
+  parsed_html_document = BeautifulSoup(html_document, &#34;lxml&#34;)
+
+  # classify document
+  classification_result = self.classifier.is_relevant(crawled_url,
+                                                      html_document)
+
+  # if page is not relevant we don&#39;t extract urls
+  if (not classification_result[&#34;relevant&#34;] and
+      not is_seed) or self.nofollow_tag_present(crawled_url,
+                                                parsed_html_document):
+    self.html_database.add_html_document(
+        crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+        classification_result[&#34;distances&#34;],
+        classification_result[&#34;relative_distances&#34;],
+        classification_result[&#34;guessed_category&#34;])
+  # if page is relevant but has a nofollow tag we save it as relevant but
+  # dont extract urls
+  elif self.nofollow_tag_present(crawled_url, parsed_html_document):
+    self.html_database.add_html_document(
+        crawled_url, html_document, classification_result[&#34;relevant&#34;], [],
+        classification_result[&#34;distances&#34;],
+        classification_result[&#34;relative_distances&#34;],
+        classification_result[&#34;guessed_category&#34;])
+  # page is relevant or seed and doesn&#39;t contain nofollow tag -&gt; extract urls
+  else:
+    extracted_urls = self.extract_urls(parsed_html_document, crawled_url)
+    self.html_database.add_html_document(
+        crawled_url, html_document, classification_result[&#34;relevant&#34;],
+        extracted_urls, classification_result[&#34;distances&#34;],
+        classification_result[&#34;relative_distances&#34;],
+        classification_result[&#34;guessed_category&#34;])
+    # add extracted urls to url map
+    for exracted_url in extracted_urls:
+      self.url_map.add_url_path(crawled_url, exracted_url)
+
+    # add to urls queue but only if not already crawled and only if
+    # retrievers are still running
+    if not self.crawled_urls.crawl_limit_reached():
+      for extracted_url in extracted_urls:
+        if extracted_url not in self.crawled_urls.crawled_urls:
+          self.url_queue.add_url(extracted_url)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract_urls"><code class="name flex">
+<span>def <span class="ident">extract_urls</span></span>(<span>self, parsed_html_document: bs4.BeautifulSoup, crawled_url: str) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts all urls out of a given html document</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parsed_html_document</code></strong></dt>
+<dd>BeautifulSoup object where urls should be extracted</dd>
+<dt><strong><code>crawled_url</code></strong></dt>
+<dd>string of the url the html document belongs to</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>a list of extracted urls</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_urls(self, parsed_html_document: BeautifulSoup,
+                 crawled_url: str) -&gt; list[str]:
+  &#34;&#34;&#34;Extracts all urls out of a given html document
+
+  Args:
+    parsed_html_document: BeautifulSoup object where urls should be extracted
+    crawled_url: string of the url the html document belongs to
+
+  Returns:
+    a list of extracted urls
+  &#34;&#34;&#34;
+  # extract href property from all a elements that have it and don&#39;t start
+  # with javascript:
+  hrefs = [
+      item[&#34;href&#34;].strip()
+      for item in parsed_html_document.find_all(&#34;a&#34;, href=True)
+  ]
+
+  urls = []
+
+  # remove all hrefs that are empty, just anchors (#) or refer to other
+  # protocols like fttp://, mailto:, javascript: etc.
+  for href in hrefs:
+    if len(href) &lt;= 0:
+      continue
+    if href[0] == &#34;#&#34;:
+      continue
+    if re.search(&#34;^[a-zA-Z]+:&#34;, href) is not None:
+      # url has a protocol at the beginning, remove if not http or https
+      if len(href) &gt;= 5 and href[:4] != &#34;http&#34; and href[:5] != &#34;https&#34;:
+        continue
+    urls.append(href)
+
+  # only return urls that are valid and not in blacklist
+  valid_urls = []
+  for url in urls:
+    # check if url is valid url
+    if not self.is_valid(url):
+      # if not, it might be a relative url
+      url = self.relative_to_absolute_url(url, crawled_url)
+      # check again if now valid
+      if not self.is_valid(url):
+        # still not valid, so skip this one
+        continue
+
+    # check if url is blacklisted
+    if self.is_on_blacklist(url):
+      # url is on blacklist, skip this one
+      continue
+
+    # all checks went through, url is valid and not on blacklist
+    valid_urls.append(url)
+
+  # return list without duplicates
+  return list(dict.fromkeys(valid_urls))</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.idle_extractor"><code class="name flex">
+<span>def <span class="ident">idle_extractor</span></span>(<span>self, message: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Puts extractor into idle</p>
+<h2 id="arg">Arg</h2>
+<p>message: string why the extractor is put into idle</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def idle_extractor(self, message: str) -&gt; None:
+  &#34;&#34;&#34;Puts extractor into idle
+
+  Arg:
+    message: string why the extractor is put into idle
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_debug(self.name,
+                        &#34;putting extractor into idle (&#34; + message + &#34;)&#34;)
+  self.monitor.extractor_idle(self.state)
+  self.state = monitoring.ThreadState.IDLE</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_on_blacklist"><code class="name flex">
+<span>def <span class="ident">is_on_blacklist</span></span>(<span>self, url: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if URL or parts of it is on blacklist</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>string of the url to check</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>bool that indicates if url is on blacklist</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_on_blacklist(self, url: str) -&gt; bool:
+  &#34;&#34;&#34;Checks if URL or parts of it is on blacklist
+
+  Args:
+    url: string of the url to check
+
+  Returns:
+    bool that indicates if url is on blacklist
+  &#34;&#34;&#34;
+  # check if on blacklist
+  # check if main domain is on blacklist
+  if extract_main_domain(url) in self.blacklist[&#34;main_domains&#34;]:
+    self.logger.log_debug(self.name, &#34;domain is on blacklist (&#34; + url + &#34;)&#34;)
+    return True
+  # check if tld + main domain is on blacklist
+  if extract_main_domain_plus_tld(url) in self.blacklist[&#34;main_domains+tlds&#34;]:
+    self.logger.log_debug(self.name,
+                          &#34;domain+tld is on blacklist (&#34; + url + &#34;)&#34;)
+    return True
+  # check if extension is on blacklist
+  for extension in self.blacklist[&#34;extensions&#34;]:
+    if urlparse(url).path[-(len(extension)):] == extension:
+      self.logger.log_debug(self.name,
+                            &#34;extension is on blacklist (&#34; + url + &#34;)&#34;)
+      return True
+
+  # if every test is passed, url is not on blacklist
+  return False</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_valid"><code class="name flex">
+<span>def <span class="ident">is_valid</span></span>(<span>self, url: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given url is valid</p>
+<p><a href="https://stackoverflow.com/questions/7160737/how-to-validate-a-url-in-python-malformed-or-not">https://stackoverflow.com/questions/7160737/how-to-validate-a-url-in-python-malformed-or-not</a></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>string that needs to be checked</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>bool that shows if given url is valid</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_valid(self, url: str) -&gt; bool:
+  &#34;&#34;&#34;Checks if the given url is valid
+
+  https://stackoverflow.com/questions/7160737/how-to-validate-a-url-in-python-malformed-or-not
+
+  Args:
+    url: string that needs to be checked
+
+  Returns:
+    bool that shows if given url is valid
+  &#34;&#34;&#34;
+  if url is None or url == &#34;&#34;:
+    return False
+
+  url = url.strip()
+
+  # no url given
+  if not url:
+    self.logger.log_debug(self.name, &#34;empty url detected =&gt; Invalid&#34;)
+    return False
+
+  # url too long
+  if len(url) &gt; 2048:
+    self.logger.log_debug(self.name, &#34;url too long (&#34; + url + &#34;)&#34;)
+    return False
+
+  result = urlparse(url)
+  scheme = result.scheme
+  domain = result.netloc
+
+  # url has no scheme
+  if not scheme:
+    self.logger.log_debug(self.name,
+                          &#34;url has no scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+    return False
+
+  # url has no valid scheme
+  if not re.fullmatch(SCHEME_FORMAT, scheme):
+    self.logger.log_debug(self.name,
+                          &#34;url has no valid scheme (&#34; + url + &#34;) =&gt; Invalid&#34;)
+    return False
+
+  # url has no domain
+  if not domain:
+    self.logger.log_debug(self.name,
+                          &#34;url has no domain (&#34; + url + &#34;) =&gt; Invalid&#34;)
+    return False
+
+  # domain is malformed
+  if not re.fullmatch(DOMAIN_FORMAT, domain):
+    self.logger.log_debug(self.name,
+                          &#34;url is malformed (&#34; + url + &#34;) =&gt; Invalid&#34;)
+    return False
+
+  # if all tests are negative, URL is probably valid
+  return True</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.nofollow_tag_present"><code class="name flex">
+<span>def <span class="ident">nofollow_tag_present</span></span>(<span>self, crawled_url: str, parsed_html_document: bs4.BeautifulSoup) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if there is a nofollow robots meta tag in the given document</p>
+<p><a href="https://developers.google.com/search/docs/advanced/robots/robots_meta_tag">https://developers.google.com/search/docs/advanced/robots/robots_meta_tag</a></p>
+<h2 id="examples">Examples</h2>
+<p><meta content="noindex,nofollow" name="robots"/>
+<meta content="follow" name="robots"/></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>crawled_url</code></strong></dt>
+<dd>the url the content comes from</dd>
+<dt><strong><code>parsed_html_document</code></strong></dt>
+<dd>BeautifulSoup object which may contain the nofollow
+robots meta tag</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>boolean indicating if the given document has the nofollow robots meta tag</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nofollow_tag_present(self, crawled_url: str,
+                         parsed_html_document: BeautifulSoup) -&gt; bool:
+  &#34;&#34;&#34;Checks if there is a nofollow robots meta tag in the given document
+
+  https://developers.google.com/search/docs/advanced/robots/robots_meta_tag
+
+  Examples:
+    &lt;meta content=&#34;noindex,nofollow&#34; name=&#34;robots&#34;/&gt;
+    &lt;meta content=&#34;follow&#34; name=&#34;robots&#34;/&gt;
+
+  Args:
+    crawled_url: the url the content comes from
+    parsed_html_document: BeautifulSoup object which may contain the nofollow
+                            robots meta tag
+
+  Returns:
+    boolean indicating if the given document has the nofollow robots meta tag
+  &#34;&#34;&#34;
+  for tag in parsed_html_document.find_all(&#34;meta&#34;, attrs={&#34;name&#34;: &#34;robots&#34;}):
+    if not &#34;content&#34; in tag:
+      return False
+    for content in tag[&#34;content&#34;].split(&#34;,&#34;):
+      if content.strip() in [&#34;nofollow&#34;, &#34;none&#34;]:
+        self.logger.log_debug(
+            self.name, &#34;url &#34; + crawled_url + &#34; contains a nofollow meta tag&#34;)
+        return True
+  return False</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.relative_to_absolute_url"><code class="name flex">
+<span>def <span class="ident">relative_to_absolute_url</span></span>(<span>self, relative_url: str, parent_url: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Attempts to transform a relative url to an absolute url</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>relative_url</code></strong></dt>
+<dd>the url that needs to be transformed</dd>
+<dt><strong><code>parent_url</code></strong></dt>
+<dd>the url of the website that contained url</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>an attempt of an absolute url, not nessecarily a valid url</p>
+<h2 id="example">Example</h2>
+<p>parent_url = <a href="https://www.google.com/testpath/test.html?myparameter=1">https://www.google.com/testpath/test.html?myparameter=1</a></p>
+<p>/mytest.html =&gt; <a href="https://www.google.com/mytest.html">https://www.google.com/mytest.html</a>
+mytest.html =&gt; <a href="https://www.google.com/testpath/mytest.html">https://www.google.com/testpath/mytest.html</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def relative_to_absolute_url(self, relative_url: str, parent_url: str) -&gt; str:
+  &#34;&#34;&#34;Attempts to transform a relative url to an absolute url
+
+  Args:
+    relative_url: the url that needs to be transformed
+    parent_url: the url of the website that contained url
+
+  Returns:
+    an attempt of an absolute url, not nessecarily a valid url
+
+  Example:
+    parent_url = https://www.google.com/testpath/test.html?myparameter=1
+
+    /mytest.html =&gt; https://www.google.com/mytest.html
+    mytest.html =&gt; https://www.google.com/testpath/mytest.html
+
+  &#34;&#34;&#34;
+  # parse the parent url
+  parsed_parent = urlparse(parent_url)
+  scheme_and_domain = parsed_parent.scheme + &#34;://&#34; + parsed_parent.netloc
+  if relative_url[0] == &#34;/&#34;:
+    # url starts with a slash, so it just has to be appended to the main url
+    absolute_url = scheme_and_domain + relative_url
+  else:
+    # url doesn&#39;t start with slash, so it might be just the last part of the
+    # url (e.g. file.html)
+    if parsed_parent.path == &#34;&#34;:
+      # no path, so just add it to the domain
+      absolute_url = scheme_and_domain + &#34;/&#34; + relative_url
+    else:
+      # attach to domain and path but cut away everything after the last slash
+      absolute_url = scheme_and_domain + parsed_parent.path[:parsed_parent.
+                                                            path.rindex(&#34;/&#34;) +
+                                                            1] + relative_url
+
+  self.logger.log_debug(
+      self.name, &#34;Transformed URL &#34; + relative_url + &#34; to &#34; + absolute_url)
+  return absolute_url</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.start_extractor"><code class="name flex">
+<span>def <span class="ident">start_extractor</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Starts the extractor</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_extractor(self) -&gt; None:
+  &#34;&#34;&#34;Starts the extractor
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  while self.state != monitoring.ThreadState.STOPPED:
+
+    # check if extractor state needs to be changed
+
+    # 1. crawl limit reached and no unprocessed htmls left -&gt; stop extractor
+    if self.crawled_urls.crawl_limit_reached(
+    ) and self.unprocessed_html_database.is_empty(
+    ) and self.monitor.retrievers_all_idle_or_stopped():
+      self.stop_extractor(&#34;Crawl limit reached&#34;)
+      continue
+
+    # 2. url queue empty + all extractors stopped/idle
+    # + all retrievers stopped/idle + unprocessed htmls is empty
+    # -&gt; stop extractor
+    if self.url_queue.is_empty() and self.unprocessed_html_database.is_empty(
+    ) and self.monitor.retrievers_all_idle_or_stopped(
+    ) and self.monitor.extractors_all_idle_or_stopped():
+      self.stop_extractor(
+          &#34;url queue empty, html queue empty and no reciever or extractor running&#34;
+      )
+      continue
+
+    # 3. html database empty -&gt; idle thread
+    if self.unprocessed_html_database.is_empty():
+      self.idle_extractor(&#34;crawled urls database is empty&#34;)
+      time.sleep(0.1)
+      continue
+    else:
+      self.continue_extractor()
+    self.extract()
+
+  self.logger.log_info(self.name, &#34;stopped&#34;)</code></pre>
+</details>
+</dd>
+<dt id="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.stop_extractor"><code class="name flex">
+<span>def <span class="ident">stop_extractor</span></span>(<span>self, message: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stops the execution of the extractor</p>
+<h2 id="arg">Arg</h2>
+<p>message: string why the extractor is stopped</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_extractor(self, message: str) -&gt; None:
+  &#34;&#34;&#34;Stops the execution of the extractor
+
+  Arg:
+    message: string why the extractor is stopped
+
+  Returns:
+    None
+  &#34;&#34;&#34;
+  self.logger.log_info(self.name, &#34;stopping (&#34; + message + &#34;)&#34;)
+  self.monitor.extractor_stop(self.state)
+  self.state = monitoring.ThreadState.STOPPED</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot" href="index.html">cybersecurity-crawler.src.crawler_bot</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor">Extractor</a></code></h4>
+<ul class="">
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.continue_extractor" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.continue_extractor">continue_extractor</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract">extract</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract_urls" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.extract_urls">extract_urls</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.idle_extractor" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.idle_extractor">idle_extractor</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_on_blacklist" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_on_blacklist">is_on_blacklist</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_valid" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.is_valid">is_valid</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.nofollow_tag_present" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.nofollow_tag_present">nofollow_tag_present</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.relative_to_absolute_url" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.relative_to_absolute_url">relative_to_absolute_url</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.start_extractor" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.start_extractor">start_extractor</a></code></li>
+<li><code><a title="cybersecurity-crawler.src.crawler_bot.extractor.Extractor.stop_extractor" href="#cybersecurity-crawler.src.crawler_bot.extractor.Extractor.stop_extractor">stop_extractor</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
